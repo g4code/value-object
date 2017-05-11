@@ -1,0 +1,33 @@
+{
+    "name": "g4/value-object",
+    "description": "PHP value objects",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Drasko Gomboc",
+            "email": "drasko.gomboc@gmail.com"
+        },
+        {
+            "name": "Dejan Samardzija",
+            "email": "samardzijadejan@gmail.com"
+        },
+        {
+            "name": "Ivan Krickovic",
+            "email": "ivan.krickovic@gmail.com"
+        },
+        {
+            "name": "Zeljko Simic",
+            "email": "zeljkosbgd@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "G4\\ValueObject\\": "src/"
+        }
+    },
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "4.*"
+    }
+}
