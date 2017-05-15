@@ -1,7 +1,7 @@
 <?php
 
 use G4\ValueObject\StringLiteral;
-
+use G4\ValueObject\Exception\InvalidStringLiteralException;
 
 class StringLiteralTest extends \PHPUnit_Framework_TestCase
 {
@@ -14,7 +14,7 @@ class StringLiteralTest extends \PHPUnit_Framework_TestCase
 
     public function testWithInvalidString()
     {
-        $this->expectException('\G4\ValueObject\Exception\InvalidStringLiteralException');
+        $this->expectException(InvalidStringLiteralException::class);
         new StringLiteral(123.567);
     }
 }

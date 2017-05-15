@@ -1,7 +1,7 @@
 <?php
 
 use G4\ValueObject\Uuid;
-
+use G4\ValueObject\Exception\InvalidUuidException;
 
 class UuidTest extends \PHPUnit_Framework_TestCase
 {
@@ -14,7 +14,7 @@ class UuidTest extends \PHPUnit_Framework_TestCase
 
     public function testWithInvalidUuid()
     {
-        $this->expectException('\G4\ValueObject\Exception\InvalidUuidException');
+        $this->expectException(InvalidUuidException::class);
         new Uuid('tralalalala');
     }
 

@@ -1,7 +1,7 @@
 <?php
 
 use G4\ValueObject\Dictionary;
-
+use G4\ValueObject\Exception\InvalidDictionaryException;
 
 class DictionaryTest extends \PHPUnit_Framework_TestCase
 {
@@ -9,7 +9,7 @@ class DictionaryTest extends \PHPUnit_Framework_TestCase
 
     public function testWithEmptyArray()
     {
-        $this->expectException('\G4\ValueObject\Exception\InvalidDictionaryException');
+        $this->expectException(InvalidDictionaryException::class);
         new Dictionary([]);
     }
 
