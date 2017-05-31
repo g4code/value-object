@@ -15,6 +15,12 @@ class IntegerNumberTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(12, $integerNumber->getValue());
     }
 
+    public function testToString()
+    {
+        $integerNumber = new IntegerNumber("12");
+        $this->assertEquals("12", (string) $integerNumber);
+    }
+
     public function testFloat()
     {
         $this->expectException(InvalidIntegerNumberException::class);
