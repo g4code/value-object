@@ -13,16 +13,20 @@ class IntegerNumber implements NumberInterface
 
     /**
      * IntegerNumber constructor.
-     * @param $value integer
-     * @throws \Exception
+     * @param $value
+     * @throws InvalidIntegerNumberException
      */
     public function __construct($value)
     {
-        if(!\is_int($value)) {
+        if ($value === true || \filter_var($value, FILTER_VALIDATE_INT) === false) {
             throw new InvalidIntegerNumberException($value);
         }
+        $this->value = \intval($value);
+    }
 
-        $this->value = $value;
+    public function __toString()
+    {
+        return (string) $this->getValue();
     }
 
     /*
