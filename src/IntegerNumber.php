@@ -4,7 +4,7 @@ namespace G4\ValueObject;
 
 use G4\ValueObject\Exception\InvalidIntegerNumberException;
 
-class IntegerNumber
+class IntegerNumber implements NumberInterface
 {
     /*
      * @var integer
