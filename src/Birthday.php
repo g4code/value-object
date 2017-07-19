@@ -42,12 +42,14 @@ class Birthday
         return (new \DateTime())->setDate($this->year, $this->month, $this->day);
     }
 
-    /**
-     * @return \DateTime
-     */
     public static function get18()
     {
-        return (new \DateTime(date('Y-m-d',strtotime('18 years ago'))));
+        $aDate = (new \DateTime(date('Y-m-d',strtotime('18 years ago'))));
+        return new self(
+            $aDate->format('Y'),
+            $aDate->format('m'),
+            $aDate->format('d')
+        );
     }
 
 }

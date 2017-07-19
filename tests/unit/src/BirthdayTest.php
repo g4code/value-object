@@ -46,7 +46,7 @@ class BirthdayTest extends PHPUnit_Framework_TestCase {
 
     public function testGet18()
     {
-        $this->assertInstanceOf(DateTime::class, Birthday::get18());
+        $this->assertInstanceOf(Birthday::class, Birthday::get18());
     }
 
     private function birthdayFactory($year, $month, $day)
