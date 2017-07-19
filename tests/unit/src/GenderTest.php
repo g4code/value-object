@@ -90,8 +90,8 @@ class GenderTest extends PHPUnit_Framework_TestCase {
     //static methods
     public function testCreateMale()
     {
-        $aMale = Gender::creteMale();
-        $this->assertInstanceOf(Gender::class, Gender::creteMale());
+        $aMale = Gender::createMale();
+        $this->assertInstanceOf(Gender::class, Gender::createMale());
         $this->assertEquals("M", $aMale->getGender());
     }
 

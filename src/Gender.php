@@ -87,7 +87,7 @@ class Gender
         return $this->genderMap[$this->getOpposite()]['key'];
     }
 
-    public static function creteMale()
+    public static function createMale()
     {
         return new self(self::MALE);
     }
