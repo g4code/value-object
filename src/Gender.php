@@ -6,6 +6,10 @@ use G4\ValueObject\Exception\InvalidGenderException;
 
 class Gender
 {
+
+    const MALE   = 'M';
+    const FEMALE = 'F';
+
     private $data;
 
     private $genderMap = [
@@ -81,6 +85,16 @@ class Gender
     public function getOppositeGenderKey()
     {
         return $this->genderMap[$this->getOpposite()]['key'];
+    }
+
+    public static function creteMale()
+    {
+        return new self(self::MALE);
+    }
+
+    public static function createFemale()
+    {
+        return new self(self::FEMALE);
     }
 
 }

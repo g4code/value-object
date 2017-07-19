@@ -86,6 +86,22 @@ class GenderTest extends PHPUnit_Framework_TestCase {
         $this->genderFactory('some_unknowN_@gender!');
     }
 
+
+    //static methods
+    public function testCreateMale()
+    {
+        $aMale = Gender::creteMale();
+        $this->assertInstanceOf(Gender::class, Gender::creteMale());
+        $this->assertEquals("M", $aMale->getGender());
+    }
+
+    public function testCreateFemale()
+    {
+        $aFemale = Gender::createFemale();
+        $this->assertInstanceOf(Gender::class, Gender::createFemale());
+        $this->assertEquals("F", $aFemale->getGender());
+    }
+
     private function genderFactory($gender)
     {
         return new Gender($gender);
