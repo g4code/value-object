@@ -40,4 +40,14 @@ class Pathname
         }
         return $this->path;
     }
+
+    /**
+     * @param Pathname $pathname
+     * @return StringLiteral
+     */
+    public function diff(Pathname $pathname)
+    {
+        $diff = str_replace((string) $pathname, '', $this->__toString());
+        return new StringLiteral($diff);
+    }
 }
