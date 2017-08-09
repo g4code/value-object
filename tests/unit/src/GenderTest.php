@@ -46,6 +46,11 @@ class GenderTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals("1", $this->genderFactory("M")->getGenderKey());
     }
 
+    public function testGetOppositeGenderKeyMale()
+    {
+        $this->assertEquals("2", $this->genderFactory("M")->getOppositeGenderKey());
+    }
+
 
     //FEMALE
     public function testGetGenderFemale()
@@ -86,6 +91,11 @@ class GenderTest extends PHPUnit_Framework_TestCase {
     public function testGetGenderKeyFemale()
     {
         $this->assertEquals("2", $this->genderFactory("F")->getGenderKey());
+    }
+
+    public function testGetOppositeGenderKeyFemale()
+    {
+        $this->assertEquals("1", $this->genderFactory("F")->getOppositeGenderKey());
     }
 
     //exceptions
