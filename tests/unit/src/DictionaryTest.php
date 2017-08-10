@@ -15,7 +15,7 @@ class DictionaryTest extends \PHPUnit_Framework_TestCase
 
     public function testHas()
     {
-        $aDictianary = new Dictionary(['a' => 'a value']);
+        $aDictianary = new Dictionary(['a' => 'a path']);
         $this->assertFalse($aDictianary->has('b'));
         $this->assertTrue($aDictianary->has('a'));
     }
@@ -25,7 +25,7 @@ class DictionaryTest extends \PHPUnit_Framework_TestCase
         $data = [
             'a' => [
                 'b' => [
-                    'c' => 'value'
+                    'c' => 'path'
                 ]
             ]
         ];
@@ -43,8 +43,8 @@ class DictionaryTest extends \PHPUnit_Framework_TestCase
 
     public function testGet()
     {
-        $aDictionary = new Dictionary(['a' => 'a value']);
-        $this->assertEquals('a value', $aDictionary->get('a'));
+        $aDictionary = new Dictionary(['a' => 'a path']);
+        $this->assertEquals('a path', $aDictionary->get('a'));
         $this->assertNull($aDictionary->get('b'));
     }
 
@@ -53,7 +53,7 @@ class DictionaryTest extends \PHPUnit_Framework_TestCase
         $data = [
             'a' => [
                 'b' => [
-                    'c' => 'value'
+                    'c' => 'path'
                 ]
             ]
         ];

@@ -1,4 +1,4 @@
-TITLE = [value-object]
+TITLE = [path-object]
 
 unit-tests:
 	@/bin/echo -e "${TITLE} unit test suite started..." \
