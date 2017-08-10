@@ -2,6 +2,9 @@
 
 use G4\ValueObject\Pathname;
 use G4\ValueObject\StringLiteral;
+use G4\ValueObject\Exception\MissingDirsException;
+use G4\ValueObject\Exception\PathDoesNotExist;
+
 
 class PathnameTest extends \PHPUnit_Framework_TestCase
 {
@@ -16,8 +19,14 @@ class PathnameTest extends \PHPUnit_Framework_TestCase
 
     public function testMissingDirs()
     {
-        $this->expectException(\G4\ValueObject\Exception\MissingDirsException::class);
+        $this->expectException(MissingDirsException::class);
         new Pathname();
+    }
+
+    public function testInvalidPath()
+    {
+        $this->expectException(PathDoesNotExist::class);
+        (string) (new Pathname(__DIR__, 'path'));
     }
 
     public function testDiff()

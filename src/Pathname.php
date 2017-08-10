@@ -3,6 +3,7 @@
 namespace G4\ValueObject;
 
 use G4\ValueObject\Exception\MissingDirsException;
+use G4\ValueObject\Exception\PathDoesNotExist;
 
 class Pathname
 {
@@ -28,6 +29,10 @@ class Pathname
             throw new MissingDirsException();
         }
         $this->dirs = $dirs;
+        $this->path = realpath($this->joinDirs());
+        if ($this->path === false) {
+            throw new PathDoesNotExist($this->joinDirs());
+        }
     }
 
     /**
@@ -35,9 +40,6 @@ class Pathname
      */
     public function __toString()
     {
-        if ($this->path === null) {
-            $this->path = realpath(join(DIRECTORY_SEPARATOR, $this->dirs));
-        }
         return $this->path;
     }
 
@@ -49,5 +51,10 @@ class Pathname
     {
         $diff = str_replace((string) $pathname, '', $this->__toString());
         return new StringLiteral($diff);
+    }
+
+    private function joinDirs()
+    {
+        return join(DIRECTORY_SEPARATOR, $this->dirs);
     }
 }
