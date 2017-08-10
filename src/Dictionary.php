@@ -46,4 +46,22 @@ class Dictionary
         return array_key_exists($key, $this->data);
     }
 
+
+    public function hasInDeeperLevels(...$keys)
+    {
+        $data = $this->data;
+        $has = false;
+        foreach ($keys as $aKey) {
+            if (is_array($data) && array_key_exists($aKey, $data)) {
+                $data = $data[$aKey];
+                $has = true;
+            } else {
+                $has = false;
+                break;
+            }
+        }
+        return $has;
+    }
+
+
 }

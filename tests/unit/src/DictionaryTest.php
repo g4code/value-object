@@ -20,6 +20,25 @@ class DictionaryTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($aDictianary->has('a'));
     }
 
+    public function testHasInDeeperLevels()
+    {
+        $aDictionary = new Dictionary([
+            'a' => [
+                'b' => [
+                    'c' => 'value'
+                ]
+            ]
+        ]);
+
+        $this->assertTrue($aDictionary->hasInDeeperLevels('a'));
+        $this->assertTrue($aDictionary->hasInDeeperLevels('a', 'b'));
+        $this->assertTrue($aDictionary->hasInDeeperLevels('a', 'b', 'c'));
+        $this->assertFalse($aDictionary->hasInDeeperLevels('f', 'b', 'c'));
+        $this->assertFalse($aDictionary->hasInDeeperLevels('a', 'f', 'c'));
+        $this->assertFalse($aDictionary->hasInDeeperLevels('a', 'b', 'f'));
+        $this->assertFalse($aDictionary->hasInDeeperLevels('a', 'b', 'c', 'f'));
+    }
+
     public function testGet()
     {
         $aDictionary = new Dictionary(['a' => 'a value']);
