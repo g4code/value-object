@@ -38,6 +38,24 @@ class Dictionary
     }
 
     /**
+     * @param array ...$keys
+     * @return array|mixed|null
+     */
+    public function getFromDeeperLevels(...$keys)
+    {
+        $data = $this->data;
+        foreach ($keys as $keyIndex => $aKey) {
+            if (is_array($data) && array_key_exists($aKey, $data)) {
+                $data = $data[$aKey];
+            } else {
+                $data = null;
+                break;
+            }
+        }
+        return $data;
+    }
+
+    /**
      * @param $key
      * @return bool
      */
@@ -46,7 +64,10 @@ class Dictionary
         return array_key_exists($key, $this->data);
     }
 
-
+    /**
+     * @param array ...$keys
+     * @return bool
+     */
     public function hasInDeeperLevels(...$keys)
     {
         $data = $this->data;
