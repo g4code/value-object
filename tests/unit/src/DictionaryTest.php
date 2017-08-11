@@ -68,4 +68,21 @@ class DictionaryTest extends \PHPUnit_Framework_TestCase
         $this->assertNull($aDictionary->getFromDeeperLevels('a', 'b', 'f'));
         $this->assertNull($aDictionary->getFromDeeperLevels('a', 'b', 'c', 'f'));
     }
+
+    public function testGetAll()
+    {
+        $this->assertEquals(['key' => 'value'], (new Dictionary(['key' => 'value']))->getAll());
+    }
+
+    public function testHasKeys()
+    {
+        $data = [
+            'key1' => 'value1',
+            'key2' => 'value2',
+            'key3' => 'value3',
+        ];
+        $aDictionary = new Dictionary($data);
+        $this->assertTrue($aDictionary->hasKeys(['key1','key2','key3']));
+        $this->assertFalse($aDictionary->hasKeys(['key432','key342','key5487']));
+    }
 }

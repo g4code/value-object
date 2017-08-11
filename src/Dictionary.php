@@ -84,5 +84,24 @@ class Dictionary
         return $has;
     }
 
+    /**
+     * @return array
+     */
+    public function getAll()
+    {
+        return $this->data;
+    }
+
+    /**
+     * @param $keys
+     * @return bool
+     */
+    public function hasKeys($keys)
+    {
+        return !empty(array_filter($keys, function($key) {
+            return $this->has($key);
+        }));
+    }
+
 
 }
