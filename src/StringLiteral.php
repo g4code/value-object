@@ -31,4 +31,24 @@ class StringLiteral implements StringInterface
     {
         return $this->value;
     }
+
+    /**
+     * @param StringLiteral $value
+     * @return StringLiteral
+     */
+    public function append(StringLiteral $value)
+    {
+        $modified = $this->value . $value;
+        return new StringLiteral($modified);
+    }
+
+    /**
+     * @param StringLiteral $value
+     * @return StringLiteral
+     */
+    public function prepend(StringLiteral $value)
+    {
+        $modified = $value . $this->value;
+        return new StringLiteral($modified);
+    }
 }

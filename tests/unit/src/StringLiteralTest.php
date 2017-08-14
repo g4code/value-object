@@ -17,4 +17,22 @@ class StringLiteralTest extends \PHPUnit_Framework_TestCase
         $this->expectException(InvalidStringLiteralException::class);
         new StringLiteral(123.567);
     }
+
+    public function testAppend()
+    {
+        $aStringLiteral = new StringLiteral('tralala');
+        $modifiedString = $aStringLiteral->append(new StringLiteral('aaa'));
+
+        $this->assertInstanceOf(StringLiteral::class, $modifiedString);
+        $this->assertEquals('tralalaaaa', (string) $modifiedString);
+    }
+
+    public function testPrepend()
+    {
+        $aStringLiteral = new StringLiteral('tralala');
+        $modifiedString = $aStringLiteral->prepend(new StringLiteral('aaa'));
+
+        $this->assertInstanceOf(StringLiteral::class, $modifiedString);
+        $this->assertEquals('aaatralala', (string) $modifiedString);
+    }
 }
