@@ -65,6 +65,15 @@ class Dictionary
     }
 
     /**
+     * @param $key
+     * @return bool
+     */
+    public function hasNonEmptyValue($key)
+    {
+        return $this->has($key) && !empty($this->data[$key]);
+    }
+
+    /**
      * @param array ...$keys
      * @return bool
      */

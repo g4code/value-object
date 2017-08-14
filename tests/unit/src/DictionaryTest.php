@@ -15,9 +15,28 @@ class DictionaryTest extends \PHPUnit_Framework_TestCase
 
     public function testHas()
     {
-        $aDictianary = new Dictionary(['a' => 'a path']);
-        $this->assertFalse($aDictianary->has('b'));
-        $this->assertTrue($aDictianary->has('a'));
+        $aDictionary = new Dictionary(['a' => 'a path']);
+        $this->assertFalse($aDictionary->has('b'));
+        $this->assertTrue($aDictionary->has('a'));
+    }
+
+    public function testHasNonEmptyValue()
+    {
+        $aDictionary = new Dictionary(['a' => 'a path']);
+        $this->assertTrue($aDictionary->hasNonEmptyValue('a'));
+        $this->assertFalse($aDictionary->hasNonEmptyValue('b'));
+
+        $aDictionary = new Dictionary(['a' => ['b'=>'c']]);
+        $this->assertTrue($aDictionary->hasNonEmptyValue('a'));
+
+        $aDictionary = new Dictionary(['a' => '']);
+        $this->assertFalse($aDictionary->hasNonEmptyValue('a'));
+
+        $aDictionary = new Dictionary(['a' => 0]);
+        $this->assertFalse($aDictionary->hasNonEmptyValue('a'));
+
+        $aDictionary = new Dictionary(['a' => []]);
+        $this->assertFalse($aDictionary->hasNonEmptyValue('a'));
     }
 
     public function testHasInDeeperLevels()
