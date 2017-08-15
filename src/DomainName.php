@@ -25,11 +25,27 @@ class DomainName implements StringInterface
         $this->value = $value;
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return $this->value;
     }
 
+    /**
+     * @param DomainName $domainName
+     * @return bool
+     */
+    public function equals(DomainName $domainName)
+    {
+        return $this->__toString() === $domainName->__toString();
+    }
+
+    /**
+     * @param $value
+     * @return bool
+     */
     private function isValid($value)
     {
         return \is_string($value)

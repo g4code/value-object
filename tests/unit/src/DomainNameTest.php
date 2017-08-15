@@ -39,4 +39,14 @@ class DomainNameTest extends \PHPUnit_Framework_TestCase
         $this->expectException(InvalidDomainNameException::class);
         new DomainName('s---a%%%%%%aaa1.a.coco');
     }
+
+    public function testEquals()
+    {
+        $domainNameOne = new DomainName('google.com');
+        $domainNameTwo = new DomainName('google.com');
+        $domainNameThree = new DomainName('google.de');
+
+        $this->assertTrue($domainNameOne->equals($domainNameTwo));
+        $this->assertFalse($domainNameTwo->equals($domainNameThree));
+    }
 }
