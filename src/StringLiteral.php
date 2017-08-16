@@ -33,22 +33,24 @@ class StringLiteral implements StringInterface
     }
 
     /**
-     * @param StringLiteral $value
+     * @param StringInterface $value
+     * @param StringInterface|null $delimiter
      * @return StringLiteral
      */
-    public function append(StringLiteral $value)
+    public function append(StringInterface $value, StringInterface $delimiter = null)
     {
-        $modified = $this->value . $value;
+        $modified = $this->value . ($delimiter === null ? '' : $delimiter->__toString()) . $value->__toString();
         return new StringLiteral($modified);
     }
 
     /**
      * @param StringLiteral $value
+     * @param StringInterface|null $delimiter
      * @return StringLiteral
      */
-    public function prepend(StringLiteral $value)
+    public function prepend(StringLiteral $value, StringInterface $delimiter = null)
     {
-        $modified = $value . $this->value;
+        $modified = $value->__toString() . ($delimiter === null ? '' : $delimiter->__toString()) . $this->value;
         return new StringLiteral($modified);
     }
 }

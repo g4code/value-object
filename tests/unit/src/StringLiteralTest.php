@@ -25,6 +25,11 @@ class StringLiteralTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf(StringLiteral::class, $modifiedString);
         $this->assertEquals('tralalaaaa', (string) $modifiedString);
+
+        $modifiedStringWithDelimiter = $modifiedString->append(new StringLiteral('b'), new StringLiteral('-'));
+
+        $this->assertInstanceOf(StringLiteral::class, $modifiedStringWithDelimiter);
+        $this->assertEquals('tralalaaaa-b', (string) $modifiedStringWithDelimiter);
     }
 
     public function testPrepend()
@@ -34,5 +39,10 @@ class StringLiteralTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf(StringLiteral::class, $modifiedString);
         $this->assertEquals('aaatralala', (string) $modifiedString);
+
+        $modifiedStringWithDelimiter = $modifiedString->prepend(new StringLiteral('b'), new StringLiteral('-'));
+
+        $this->assertInstanceOf(StringLiteral::class, $modifiedStringWithDelimiter);
+        $this->assertEquals('b-aaatralala', (string) $modifiedStringWithDelimiter);
     }
 }
