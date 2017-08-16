@@ -4,7 +4,7 @@ namespace G4\ValueObject;
 
 use G4\ValueObject\Exception\InvalidIpException;
 
-class Ip
+class Ip implements StringInterface
 {
 
     /**
