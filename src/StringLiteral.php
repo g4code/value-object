@@ -2,9 +2,6 @@
 
 namespace G4\ValueObject;
 
-use G4\ValueObject\Exception\InvalidStringLiteralException;
-
-
 class StringLiteral implements StringInterface
 {
 
@@ -20,11 +17,7 @@ class StringLiteral implements StringInterface
      */
     public function __construct($value)
     {
-        if(!\is_string($value)) {
-            throw new InvalidStringLiteralException($value);
-        }
-
-        $this->value = $value;
+        $this->value = (string)$value;
     }
 
     public function __toString()
