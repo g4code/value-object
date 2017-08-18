@@ -4,7 +4,7 @@ namespace G4\ValueObject;
 
 use G4\ValueObject\Exception\InvalidEnvironment;
 
-class Environment
+class Environment implements StringInterface
 {
     const PRODUCTION    = 'production';
     const STAGE         = 'stage';
