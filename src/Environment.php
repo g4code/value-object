@@ -34,6 +34,26 @@ class Environment implements StringInterface
         return $this->value;
     }
 
+    public function isProduction()
+    {
+        return $this->value === self::PRODUCTION;
+    }
+
+    public function isStage()
+    {
+        return $this->value === self::STAGE;
+    }
+
+    public function isDev()
+    {
+        return $this->value === self::DEV;
+    }
+
+    public function isLocal()
+    {
+        return $this->value === self::LOCAL;
+    }
+
     private function isValid($value)
     {
         return in_array($value, [
