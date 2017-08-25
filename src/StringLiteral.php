@@ -45,6 +45,15 @@ class StringLiteral implements StringInterface
 
     /**
      * @param StringLiteral $value
+     * @return bool
+     */
+    public function equals(StringLiteral $value)
+    {
+        return $this->value === $value->__toString();
+    }
+
+    /**
+     * @param StringLiteral $value
      * @param StringInterface|null $delimiter
      * @return StringLiteral
      */

@@ -32,6 +32,14 @@ class StringLiteralTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('tralalaaaa-b', (string) $modifiedStringWithDelimiter);
     }
 
+    public function testEquals()
+    {
+        $aStringLiteral = new StringLiteral('tralala');
+
+        $this->assertTrue($aStringLiteral->equals(new StringLiteral('tralala')));
+        $this->assertFalse($aStringLiteral->equals(new StringLiteral('aaa')));
+    }
+
     public function testPrepend()
     {
         $aStringLiteral = new StringLiteral('tralala');
