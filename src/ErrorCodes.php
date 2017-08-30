@@ -8,5 +8,5 @@ class ErrorCodes
     const PATH_DOES_NOT_EXIST           = 60002;
     const INVALID_ENVIRONMENT           = 60003;
     const INVALID_SEMANTIV_VERSION      = 60004;
-
+    const INVALID_BASE64_ENCODED        = 60005;
 }
