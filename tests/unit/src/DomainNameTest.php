@@ -1,6 +1,7 @@
 <?php
 
 use G4\ValueObject\DomainName;
+use G4\ValueObject\StringLiteral;
 use G4\ValueObject\Exception\InvalidDomainNameException;
 
 class DomainNameTest extends \PHPUnit_Framework_TestCase
@@ -48,5 +49,23 @@ class DomainNameTest extends \PHPUnit_Framework_TestCase
 
         $this->assertTrue($domainNameOne->equals($domainNameTwo));
         $this->assertFalse($domainNameTwo->equals($domainNameThree));
+    }
+
+    public function testAppend()
+    {
+        $domainName = new DomainName('google.com');
+        $appended   = $domainName->append(new StringLiteral('int'), new StringLiteral('dev'));
+
+        $this->assertInstanceOf(DomainName::class, $appended);
+        $this->assertEquals('google.com.int.dev', (string) $appended);
+    }
+
+    public function testPrepend()
+    {
+        $domainName = new DomainName('google.com');
+        $prepended  = $domainName->prepend(new StringLiteral('www'), new StringLiteral('beta'));
+
+        $this->assertInstanceOf(DomainName::class, $prepended);
+        $this->assertEquals('www.beta.google.com', (string) $prepended);
     }
 }

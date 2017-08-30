@@ -7,6 +7,8 @@ use G4\ValueObject\Exception\InvalidDomainNameException;
 class DomainName implements StringInterface
 {
 
+    const DELIMITER = '.';
+
     /**
      * @var string
      */
@@ -40,6 +42,26 @@ class DomainName implements StringInterface
     public function equals(DomainName $domainName)
     {
         return $this->__toString() === $domainName->__toString();
+    }
+
+    /**
+     * @param StringInterface[] ...$value
+     * @return DomainName
+     */
+    public function append(StringInterface ...$value)
+    {
+        array_unshift($value, $this->__toString());
+        return new self(join(self::DELIMITER, $value));
+    }
+
+    /**
+     * @param StringInterface[] ...$value
+     * @return DomainName
+     */
+    public function prepend(StringInterface ...$value)
+    {
+        array_push($value, $this->__toString());
+        return new self(join(self::DELIMITER, $value));
     }
 
     /**
