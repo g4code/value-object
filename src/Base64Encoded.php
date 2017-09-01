@@ -1,11 +1,8 @@
 <?php
 
-namespace G4\ValueObject\Exception;
-
-
 namespace G4\ValueObject;
 
-use G4\ValueObject\Exception\InvalidBase64Encoded;
+use G4\ValueObject\Exception\InvalidBase64EncodedException;
 
 class Base64Encoded
 {
@@ -14,7 +11,7 @@ class Base64Encoded
     public function __construct($encodedBytes)
     {
         if (!base64_decode($encodedBytes, true)) {
-            throw new InvalidBase64Encoded($encodedBytes);
+            throw new InvalidBase64EncodedException($encodedBytes);
         }
 
         $this->encodedBytes = $encodedBytes;

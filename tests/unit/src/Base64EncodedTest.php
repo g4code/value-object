@@ -1,7 +1,7 @@
 <?php
 
 use G4\ValueObject\Base64Encoded;
-use G4\ValueObject\Exception\InvalidBase64Encoded;
+use G4\ValueObject\Exception\InvalidBase64EncodedException;
 
 class Base64EncodedTest extends PHPUnit_Framework_TestCase
 {
@@ -15,7 +15,7 @@ class Base64EncodedTest extends PHPUnit_Framework_TestCase
 
     public function testInvalidBase64Encoded()
     {
-        $this->expectException(InvalidBase64Encoded::class);
+        $this->expectException(InvalidBase64EncodedException::class);
         $this->base64EncodedFactory('');
     }
 
