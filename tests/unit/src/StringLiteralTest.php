@@ -53,4 +53,10 @@ class StringLiteralTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf(StringLiteral::class, $modifiedStringWithDelimiter);
         $this->assertEquals('b-aaatralala', (string) $modifiedStringWithDelimiter);
     }
+
+    public function testIsEmpty()
+    {
+        $this->assertFalse((new StringLiteral('tralala'))->isEmpty());
+        $this->assertTrue((new StringLiteral(''))->isEmpty());
+    }
 }

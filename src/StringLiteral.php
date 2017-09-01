@@ -53,6 +53,14 @@ class StringLiteral implements StringInterface
     }
 
     /**
+     * @return bool
+     */
+    public function isEmpty()
+    {
+        return strlen($this->value) === 0;
+    }
+
+    /**
      * @param StringLiteral $value
      * @param StringInterface|null $delimiter
      * @return StringLiteral
