@@ -2,9 +2,7 @@
 
 namespace G4\ValueObject;
 
-use G4\ValueObject\Exception\InvalidDictionaryException;
-
-class Dictionary implements DictionaryInterface
+class Dictionary
 {
 
     /**
@@ -15,14 +13,9 @@ class Dictionary implements DictionaryInterface
     /**
      * Dictionary constructor.
      * @param array $data
-     * @throws InvalidDictionaryException
      */
     public function __construct(array $data)
     {
-        if (empty($data)) {
-            throw new InvalidDictionaryException($data);
-        }
-
         $this->data = $data;
     }
 

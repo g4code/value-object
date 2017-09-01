@@ -5,19 +5,14 @@ use G4\ValueObject\Exception\InvalidDictionaryException;
 
 class DictionaryTest extends \PHPUnit_Framework_TestCase
 {
-
-
-    public function testWithEmptyArray()
-    {
-        $this->expectException(InvalidDictionaryException::class);
-        new Dictionary([]);
-    }
-
     public function testHas()
     {
         $aDictionary = new Dictionary(['a' => 'a path']);
         $this->assertFalse($aDictionary->has('b'));
         $this->assertTrue($aDictionary->has('a'));
+
+        $aDictionary = new Dictionary([]);
+        $this->assertFalse($aDictionary->has('a'));
     }
 
     public function testHasNonEmptyValue()
@@ -37,6 +32,10 @@ class DictionaryTest extends \PHPUnit_Framework_TestCase
 
         $aDictionary = new Dictionary(['a' => []]);
         $this->assertFalse($aDictionary->hasNonEmptyValue('a'));
+
+        $aDictionary = new Dictionary([]);
+        $this->assertFalse($aDictionary->hasNonEmptyValue('a'));
+        $this->assertFalse($aDictionary->hasNonEmptyValue(''));
     }
 
     public function testHasInDeeperLevels()
@@ -58,6 +57,11 @@ class DictionaryTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($aDictionary->hasInDeeperLevels('a', 'f', 'c'));
         $this->assertFalse($aDictionary->hasInDeeperLevels('a', 'b', 'f'));
         $this->assertFalse($aDictionary->hasInDeeperLevels('a', 'b', 'c', 'f'));
+
+        $aDictionary = new Dictionary([]);
+        $this->assertFalse($aDictionary->hasInDeeperLevels('a'));
+        $this->assertFalse($aDictionary->hasInDeeperLevels('f', 'b'));
+
     }
 
     public function testGet()
@@ -65,6 +69,9 @@ class DictionaryTest extends \PHPUnit_Framework_TestCase
         $aDictionary = new Dictionary(['a' => 'a path']);
         $this->assertEquals('a path', $aDictionary->get('a'));
         $this->assertNull($aDictionary->get('b'));
+
+        $aDictionary = new Dictionary([]);
+        $this->assertNull(null, $aDictionary->get('a'));
     }
 
     public function testGetFromDeeperLevels()
@@ -86,11 +93,16 @@ class DictionaryTest extends \PHPUnit_Framework_TestCase
         $this->assertNull($aDictionary->getFromDeeperLevels('a', 'f', 'c'));
         $this->assertNull($aDictionary->getFromDeeperLevels('a', 'b', 'f'));
         $this->assertNull($aDictionary->getFromDeeperLevels('a', 'b', 'c', 'f'));
+
+        $aDictionary = new Dictionary([]);
+        $this->assertNull($aDictionary->getFromDeeperLevels('a'));
+        $this->assertNull($aDictionary->getFromDeeperLevels('f', 'b'));
     }
 
     public function testGetAll()
     {
         $this->assertEquals(['key' => 'value'], (new Dictionary(['key' => 'value']))->getAll());
+        $this->assertEquals([], (new Dictionary([]))->getAll());
     }
 
     public function testHasKeys()
@@ -103,5 +115,8 @@ class DictionaryTest extends \PHPUnit_Framework_TestCase
         $aDictionary = new Dictionary($data);
         $this->assertTrue($aDictionary->hasKeys(['key1','key2','key3']));
         $this->assertFalse($aDictionary->hasKeys(['key432','key342','key5487']));
+
+        $aDictionary = new Dictionary([]);
+        $this->assertFalse($aDictionary->hasKeys(['key1','key2']));
     }
 }
