@@ -10,7 +10,7 @@ class InvalidDictionaryException extends \Exception
 
     public function __construct($value)
     {
-        $message = sprintf('Argument %s is invalid. Argument must be a valid, not empty ARRAY.', \var_export($value, true));
+        $message = sprintf('Argument %s is invalid.', \var_export($value, true));
         $code = self::ERROR_UUID;
         parent::__construct($message, $code);
     }
