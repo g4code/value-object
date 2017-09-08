@@ -119,4 +119,14 @@ class DictionaryTest extends \PHPUnit_Framework_TestCase
         $aDictionary = new Dictionary([]);
         $this->assertFalse($aDictionary->hasKeys(['key1','key2']));
     }
+
+    public function testGetFormattedStringOfData()
+    {
+        $aDictionary = new Dictionary(['tags1', 'tags2', 'tags3']);
+        $this->assertEquals('tags1|tags2|tags3', $aDictionary->getFormattedStringOfData());
+        $this->assertEquals('tags1-tags2-tags3', $aDictionary->getFormattedStringOfData('-'));
+
+        $aDictionary = new Dictionary([]);
+        $this->assertEmpty($aDictionary->getFormattedStringOfData());
+    }
 }
