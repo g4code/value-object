@@ -1,6 +1,7 @@
 <?php
 
 use G4\ValueObject\Dictionary;
+use G4\ValueObject\StringLiteral;
 use G4\ValueObject\Exception\InvalidDictionaryException;
 
 class DictionaryTest extends \PHPUnit_Framework_TestCase
@@ -120,13 +121,16 @@ class DictionaryTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($aDictionary->hasKeys(['key1','key2']));
     }
 
-    public function testGetFormattedStringOfData()
+    public function testToString()
     {
         $aDictionary = new Dictionary(['tags1', 'tags2', 'tags3']);
-        $this->assertEquals('tags1|tags2|tags3', $aDictionary->getFormattedStringOfData());
-        $this->assertEquals('tags1-tags2-tags3', $aDictionary->getFormattedStringOfData('-'));
+        $this->assertEquals('tags1tags2tags3', $aDictionary->toString());
+        $this->assertEquals('tags1|tags2|tags3', $aDictionary->toString(new StringLiteral('|')));
+        $this->assertEquals('tags1-tags2-tags3', $aDictionary->toString(new StringLiteral('-')));
 
         $aDictionary = new Dictionary([]);
-        $this->assertEmpty($aDictionary->getFormattedStringOfData());
+        $this->assertEmpty($aDictionary->toString());
+        $this->assertEmpty($aDictionary->toString(new StringLiteral('|')));
+        $this->assertEmpty($aDictionary->toString(new StringLiteral('-')));
     }
 }
