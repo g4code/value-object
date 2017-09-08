@@ -68,4 +68,12 @@ class DomainNameTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf(DomainName::class, $prepended);
         $this->assertEquals('www.beta.google.com', (string) $prepended);
     }
+
+    public function testGetTopLevelDomainName()
+    {
+        $topLevel = (new DomainName('www.google.com'))->getTopLevelDomainName();
+
+        $this->assertInstanceOf(StringLiteral::class, $topLevel);
+        $this->assertEquals('com', (string) $topLevel);
+    }
 }

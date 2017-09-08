@@ -45,6 +45,16 @@ class DomainName implements StringInterface
     }
 
     /**
+     * @return DomainName
+     */
+    public function getTopLevelDomainName()
+    {
+        preg_match('~\.([a-zA-Z\d]{1,63})$~xuis', $this->__toString(), $matches);
+
+        return new StringLiteral($matches[1]);
+    }
+
+    /**
      * @param StringInterface[] ...$value
      * @return DomainName
      */
