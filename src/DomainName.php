@@ -37,6 +37,17 @@ class DomainName implements StringInterface
 
     /**
      * @param DomainName $domainName
+     * @return StringLiteral
+     */
+    public function diff(DomainName $domainName)
+    {
+        $diff = str_replace($domainName->__toString(), '', $this->__toString());
+        $diff = preg_replace('/\.$/xuis', '', $diff);
+        return new StringLiteral($diff);
+    }
+
+    /**
+     * @param DomainName $domainName
      * @return bool
      */
     public function equals(DomainName $domainName)
