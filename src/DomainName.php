@@ -47,9 +47,19 @@ class DomainName implements StringInterface
     /**
      * @return DomainName
      */
+    public function getFirstLevelDomainName()
+    {
+        preg_match('/(^|\.)((?!\d+)[a-zA-Z\d]{1,63}\.(?!\d+)[a-zA-Z\d]{1,63})$/uxis', $this->__toString(), $matches);
+
+        return new self($matches[2]);
+    }
+
+    /**
+     * @return DomainName
+     */
     public function getTopLevelDomainName()
     {
-        preg_match('~\.([a-zA-Z\d]{1,63})$~xuis', $this->__toString(), $matches);
+        preg_match('/\.((?!\d+)[a-zA-Z\d]{1,63})$/xuis', $this->__toString(), $matches);
 
         return new StringLiteral($matches[1]);
     }
