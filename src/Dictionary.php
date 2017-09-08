@@ -4,6 +4,7 @@ namespace G4\ValueObject;
 
 class Dictionary
 {
+    const STRING_DELIMITER = '|';
 
     /**
      * @var array
@@ -105,5 +106,12 @@ class Dictionary
         }));
     }
 
-
+    /**
+     * @param string $delimiter
+     * @return string
+     */
+    public function getFormattedStringOfData($delimiter = self::STRING_DELIMITER)
+    {
+        return join($delimiter, $this->data);
+    }
 }
