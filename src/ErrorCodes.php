@@ -9,4 +9,5 @@ class ErrorCodes
     const INVALID_ENVIRONMENT           = 60003;
     const INVALID_SEMANTIV_VERSION      = 60004;
     const INVALID_BASE64_ENCODED        = 60005;
+    const INVALID_COUNTRY_CODE          = 60006;
 }
