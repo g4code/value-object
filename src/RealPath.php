@@ -15,15 +15,24 @@ class RealPath
 
     /**
      * RealPath constructor.
-     * @param array ...$dirs
+     * @param array ...$parts
      * @throws PathDoesNotExist
      */
-    public function __construct(...$dirs)
+    public function __construct(...$parts)
     {
-        $this->path = realpath(RelativePath::join($dirs));
+        $this->path = realpath(RelativePath::join($parts));
         if ($this->path === false) {
-            throw new PathDoesNotExist(RelativePath::join($dirs));
+            throw new PathDoesNotExist(RelativePath::join($parts));
         }
+    }
+
+    /**
+     * @param $onePart
+     * @return RealPath
+     */
+    public function append($onePart)
+    {
+        return new self($this->path, $onePart);
     }
 
     /**
@@ -38,7 +47,7 @@ class RealPath
      * @param Pathname $pathname
      * @return StringLiteral
      */
-    public function diff(Pathname $pathname)
+    public function diff(RealPath $pathname)
     {
         $diff = str_replace((string) $pathname, '', $this->__toString());
         return new StringLiteral($diff);
