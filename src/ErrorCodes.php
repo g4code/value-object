@@ -10,4 +10,6 @@ class ErrorCodes
     const INVALID_SEMANTIV_VERSION      = 60004;
     const INVALID_BASE64_ENCODED        = 60005;
     const INVALID_COUNTRY_CODE          = 60006;
+    const INVALID_MD5                   = 60007;
+
 }
