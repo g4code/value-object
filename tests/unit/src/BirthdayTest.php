@@ -44,6 +44,17 @@ class BirthdayTest extends PHPUnit_Framework_TestCase {
         $this->birthdayFactory('1855','30','2')->getBirthday();
     }
 
+    public function testGetAge()
+    {
+        $wasBorn = \DateTime::createFromFormat("Y", 1980);
+        $now = new \DateTime();
+
+        $this->assertEquals(
+            $now->diff($wasBorn)->y,
+            $this->birthdayFactory($wasBorn->format('Y'), 1, 1)->getAge()
+        );
+    }
+
     public function testGet18()
     {
         $this->assertInstanceOf(Birthday::class, Birthday::get18());
