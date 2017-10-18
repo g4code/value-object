@@ -33,6 +33,9 @@ class DomainNameTest extends \PHPUnit_Framework_TestCase
 
         $domainName = new DomainName('norwegian.no');
         $this->assertEquals('norwegian.no', (string) $domainName);
+
+        $domainName = new DomainName(' www.swedish.se');
+        $this->assertEquals('www.swedish.se', (string) $domainName);
     }
 
     public function testInvalidDomain()

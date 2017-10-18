@@ -21,6 +21,7 @@ class DomainName implements StringInterface
      */
     public function __construct($value)
     {
+        $value = trim($value);
         if (!$this->isValid($value)) {
             throw new InvalidDomainNameException($value);
         }
