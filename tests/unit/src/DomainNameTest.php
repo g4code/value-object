@@ -86,6 +86,9 @@ class DomainNameTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals('google.com', (string) (new DomainName('a1.www.google.com'))->getFirstLevelDomainName());
         $this->assertEquals('google.com', (string) (new DomainName('google.com'))->getFirstLevelDomainName());
+
+        $this->assertEquals('foo-bar-baz.com', (string) (new DomainName('a1.www.foo-bar-baz.com'))->getFirstLevelDomainName());
+        $this->assertEquals('foo-bar-baz.com', (string) (new DomainName('foo-bar-baz.com'))->getFirstLevelDomainName());
     }
 
     public function testDiff()
