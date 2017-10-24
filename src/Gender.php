@@ -40,6 +40,14 @@ class Gender
         $this->data = $value;
     }
 
+    public function __toString()
+    {
+        return $this->data;
+    }
+
+    /**
+     * @deprecated use magic method __toString instead
+     */
     public function getGender()
     {
         return $this->data;
@@ -62,9 +70,9 @@ class Gender
 
     public function getOpposite()
     {
-        return $this->data == 'M'
-            ? "F"
-            : "M" ;
+        return $this->data === 'M'
+            ? 'F'
+            : 'M' ;
     }
 
     public function getGenderTypeLowercase()
@@ -79,7 +87,7 @@ class Gender
 
     public function getGenderKey()
     {
-        return $this->genderMap[$this->getGender()]['key'];
+        return $this->genderMap[$this->data]['key'];
     }
 
     public function getOppositeGenderKey()
