@@ -42,7 +42,7 @@ class Gender
 
     public function __toString()
     {
-        return $this->data;
+        return (string)$this->data;
     }
 
     /**
