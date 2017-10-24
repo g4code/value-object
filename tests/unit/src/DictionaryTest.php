@@ -133,4 +133,26 @@ class DictionaryTest extends \PHPUnit_Framework_TestCase
         $this->assertEmpty($aDictionary->toString(new StringLiteral('|')));
         $this->assertEmpty($aDictionary->toString(new StringLiteral('-')));
     }
+
+    public function testAdd()
+    {
+        $aDictionary = new Dictionary([
+            'key1' => 'value1',
+            'key2' => 'value2',
+            'key3' => 'value3',
+        ]);
+        $this->assertEquals([
+            'key1' => 'value1',
+            'key2' => 'value2',
+            'key3' => 'value3',
+        ], $aDictionary->getAll());
+
+        $aDictionary->add('key4', 'value4');
+        $this->assertEquals([
+            'key1' => 'value1',
+            'key2' => 'value2',
+            'key3' => 'value3',
+            'key4' => 'value4',
+        ], $aDictionary->getAll());
+    }
 }

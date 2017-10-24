@@ -21,6 +21,17 @@ class Dictionary
 
     /**
      * @param $key
+     * @param $value
+     * @return $this
+     */
+    public function add($key, $value)
+    {
+        $this->data[$key] = $value;
+        return $this;
+    }
+
+    /**
+     * @param $key
      * @return mixed|null
      */
     public function get($key)
