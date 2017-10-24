@@ -60,6 +60,12 @@ class BirthdayTest extends PHPUnit_Framework_TestCase {
         $this->assertInstanceOf(Birthday::class, Birthday::get18());
     }
 
+    public function testFormat()
+    {
+        $aDate = $this->birthdayFactory('1961','3','30')->format();
+        $this->assertEquals('1961-03-30', $aDate);
+    }
+
     private function birthdayFactory($year, $month, $day)
     {
         return new Birthday($year, $month, $day);
