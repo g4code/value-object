@@ -6,6 +6,7 @@ use G4\ValueObject\Exception\InvalidBirthdayException;
 
 class Birthday
 {
+    const OUTPUT_DATE_FORMAT = 'Y-m-d';
 
     private $year;
     private $month;
@@ -42,6 +43,9 @@ class Birthday
         return (new \DateTime())->setDate($this->year, $this->month, $this->day);
     }
 
+    /**
+     * @return Birthday
+     */
     public static function get18()
     {
         $aDate = (new \DateTime(date('Y-m-d',strtotime('18 years ago'))));
@@ -54,12 +58,22 @@ class Birthday
 
     /**
      * Calculate the age of a person
-     */ 
+     */
     public function getAge()
     {
         $wasBorn = \DateTime::createFromFormat("Y", $this->year);
         $now = new \DateTime();
         $interval = $now->diff($wasBorn);
         return $interval->y;
+    }
+
+    /**
+     * @param string $dateFormat
+     * @return string
+     */
+    public function format($dateFormat = self::OUTPUT_DATE_FORMAT)
+    {
+        $aDate = (new \DateTime())->setDate($this->year, $this->month, $this->day);
+        return $aDate->format($dateFormat);
     }
 }
