@@ -155,4 +155,31 @@ class DictionaryTest extends \PHPUnit_Framework_TestCase
             'key4' => 'value4',
         ], $aDictionary->getAll());
     }
+
+    public function testSlice()
+    {
+        $aDictionary = new Dictionary(
+            [
+                'group1' =>[
+                    'key1' => 'value1',
+                    'key2' => 'value2',
+                    'key3' => 'value3',
+                ],
+                'group2' =>[
+                    'key1' => 'value1',
+                    'key2' => 'value2',
+                    'key3' => 'value3',
+                ],
+            ]
+        );
+
+        $slicedDictionary = $aDictionary->slice('group2');
+
+        $this->assertInstanceOf(Dictionary::class, $slicedDictionary);
+        $this->assertEquals([
+            'key1' => 'value1',
+            'key2' => 'value2',
+            'key3' => 'value3',
+        ], $slicedDictionary->getAll());
+    }
 }

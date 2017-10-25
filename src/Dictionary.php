@@ -117,6 +117,15 @@ class Dictionary
     }
 
     /**
+     * @param $key
+     * @return Dictionary
+     */
+    public function slice($key)
+    {
+        return new self($this->get($key));
+    }
+
+    /**
      * @param StringInterface|null $delimiter
      * @return string
      */
