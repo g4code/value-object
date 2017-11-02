@@ -103,6 +103,9 @@ class DomainName implements StringInterface
     private function isValid($value)
     {
         return \is_string($value)
-            && preg_match('/^(?!\-)(?:[a-zA-Z\d\-]{0,62}[a-zA-Z\d]\.){1,126}(?!\d+)[a-zA-Z\d]{1,63}$/uxis', $value) === 1;
+            && preg_match(
+                '/^(?!\-)(?:[a-zA-Z\d\-]{0,62}[a-zA-Z\d]\.){1,126}(?!\d+)[a-zA-Z\d]{1,63}$/uxis',
+                $value
+            ) === 1;
     }
 }
