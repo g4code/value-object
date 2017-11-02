@@ -3,6 +3,8 @@ value-object
 
 > value-object - [php](http://php.net) library
 
+[![Build Status](https://travis-ci.org/g4code/value-object.svg?branch=master)](https://travis-ci.org/g4code/value-object)
+
 ## Install
 Via Composer
 
