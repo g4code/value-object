@@ -21,6 +21,17 @@ class Dictionary
 
     /**
      * @param $key
+     * @param $value
+     * @return $this
+     */
+    public function add($key, $value)
+    {
+        $this->data[$key] = $value;
+        return $this;
+    }
+
+    /**
+     * @param $key
      * @return mixed|null
      */
     public function get($key)
@@ -103,6 +114,15 @@ class Dictionary
         return !empty(array_filter($keys, function($key) {
             return $this->has($key);
         }));
+    }
+
+    /**
+     * @param $key
+     * @return Dictionary
+     */
+    public function slice($key)
+    {
+        return new self($this->get($key));
     }
 
     /**

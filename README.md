@@ -1,13 +1,13 @@
-path-object
+value-object
 ======
 
-> path-object - [php](http://php.net) library
+> value-object - [php](http://php.net) library
 
 ## Install
 Via Composer
 
 ```sh
-composer require g4/path-object
+composer require g4/value-object
 ```
 
 ## Usage
