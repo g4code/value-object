@@ -17,3 +17,4 @@ vendor
 tests/unit/coverage/*
 .vagrant/
 .bash_history
+*.DS_Store
