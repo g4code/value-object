@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "7782607e75a47a2806f5e782398d4017",
+    "content-hash": "a13124fc7dd1f34cafcb7c8c21398323",
     "packages": [
         {
             "name": "paragonie/random_compat",
@@ -191,6 +191,96 @@
                 "instantiate"
             ],
             "time": "2015-06-14T21:17:01+00:00"
+        },
+        {
+            "name": "emanci/console-color",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/emanci/console-color.git",
+                "reference": "1e1f556527ebbcd6b0afd4b9fd6bf6ba332b1057"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/emanci/console-color/zipball/1e1f556527ebbcd6b0afd4b9fd6bf6ba332b1057",
+                "reference": "1e1f556527ebbcd6b0afd4b9fd6bf6ba332b1057",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~4.0|~5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Emanci\\ConsoleColor\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "emanci",
+                    "email": "zhengchaopu@gmail.com"
+                }
+            ],
+            "keywords": [
+                "bash",
+                "cli",
+                "color",
+                "console",
+                "console-color"
+            ],
+            "time": "2017-07-18T11:33:26+00:00"
+        },
+        {
+            "name": "g4/code-coverage",
+            "version": "1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/g4code/code-coverage.git",
+                "reference": "04653c623acddc14c0c89fe9b791e41eacf15b42"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/g4code/code-coverage/zipball/04653c623acddc14c0c89fe9b791e41eacf15b42",
+                "reference": "04653c623acddc14c0c89fe9b791e41eacf15b42",
+                "shasum": ""
+            },
+            "require": {
+                "emanci/console-color": "1.*",
+                "g4/value-object": "*",
+                "vanilla/garden-cli": "1.*"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "5.*",
+                "squizlabs/php_codesniffer": "3.*"
+            },
+            "bin": [
+                "bin/code-coverage"
+            ],
+            "type": "project",
+            "autoload": {
+                "psr-4": {
+                    "G4\\CodeCoverage\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Drasko Gomboc",
+                    "email": "drasko.gomboc@gmail.com"
+                }
+            ],
+            "time": "2017-11-02T13:34:06+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -1350,6 +1440,57 @@
             "time": "2016-10-03T07:35:21+00:00"
         },
         {
+            "name": "squizlabs/php_codesniffer",
+            "version": "3.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
+                "reference": "d667e245d5dcd4d7bf80f26f2c947d476b66213e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/d667e245d5dcd4d7bf80f26f2c947d476b66213e",
+                "reference": "d667e245d5dcd4d7bf80f26f2c947d476b66213e",
+                "shasum": ""
+            },
+            "require": {
+                "ext-simplexml": "*",
+                "ext-tokenizer": "*",
+                "ext-xmlwriter": "*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0"
+            },
+            "bin": [
+                "bin/phpcs",
+                "bin/phpcbf"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Greg Sherwood",
+                    "role": "lead"
+                }
+            ],
+            "description": "PHP_CodeSniffer tokenizes PHP, JavaScript and CSS files and detects violations of a defined set of coding standards.",
+            "homepage": "http://www.squizlabs.com/php-codesniffer",
+            "keywords": [
+                "phpcs",
+                "standards"
+            ],
+            "time": "2017-10-16T22:40:25+00:00"
+        },
+        {
             "name": "symfony/yaml",
             "version": "v3.3.10",
             "source": {
@@ -1403,6 +1544,42 @@
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
             "time": "2017-10-05T14:43:42+00:00"
+        },
+        {
+            "name": "vanilla/garden-cli",
+            "version": "v1.6.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vanilla/garden-cli.git",
+                "reference": "9b56c831f691ddb2aa368c012cfec01bd76333b2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vanilla/garden-cli/zipball/9b56c831f691ddb2aa368c012cfec01bd76333b2",
+                "reference": "9b56c831f691ddb2aa368c012cfec01bd76333b2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Garden\\Cli\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Todd Burry",
+                    "email": "todd@vanillaforums.com"
+                }
+            ],
+            "description": "A full-featured, yet ridiculously simple commandline parser for your next php cli script. Stop fighting with getopt().",
+            "time": "2017-02-09T19:54:53+00:00"
         },
         {
             "name": "webmozart/assert",
