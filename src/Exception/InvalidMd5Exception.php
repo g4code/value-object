@@ -14,5 +14,4 @@ class InvalidMd5Exception extends Exception
     {
         parent::__construct(sprintf(self::MESSAGE, $value), ErrorCodes::INVALID_MD5);
     }
-
 }

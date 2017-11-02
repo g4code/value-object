@@ -18,7 +18,7 @@ class BooleanValue
      */
     public function __construct($value)
     {
-        if(!is_bool($value)) {
+        if (!is_bool($value)) {
             throw new InvalidBooleanException($value);
         }
         $this->value = $value;

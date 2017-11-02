@@ -34,7 +34,7 @@ class Gender
      */
     public function __construct($value)
     {
-        if(!array_key_exists($value, $this->genderMap)){
+        if (!array_key_exists($value, $this->genderMap)) {
             throw new InvalidGenderException($value);
         }
         $this->data = $value;
@@ -104,5 +104,4 @@ class Gender
     {
         return new self(self::FEMALE);
     }
-
 }

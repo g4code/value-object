@@ -19,7 +19,7 @@ class Email
      */
     public function __construct($value)
     {
-        if(!filter_var($value, FILTER_VALIDATE_EMAIL)){
+        if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
             throw new InvalidEmailException($value);
         }
         $this->value = $value;
@@ -29,5 +29,4 @@ class Email
     {
         return $this->value;
     }
-
 }

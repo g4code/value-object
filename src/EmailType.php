@@ -2,7 +2,6 @@
 
 namespace G4\ValueObject;
 
-
 class EmailType
 {
     const OTHER = 'other';

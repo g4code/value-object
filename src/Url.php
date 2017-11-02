@@ -2,7 +2,6 @@
 
 namespace G4\ValueObject;
 
-
 use G4\ValueObject\Exception\InvalidUrlException;
 
 class Url implements StringInterface

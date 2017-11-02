@@ -23,10 +23,10 @@ class Birthday
     {
         $currentYear = getdate(time())['year'];
 
-        if($year > $currentYear || ($year + 130 < $currentYear)){
+        if ($year > $currentYear || ($year + 130 < $currentYear)) {
             throw new InvalidBirthdayException($year);
         }
-        if(checkdate($month,$day,$year) === false){
+        if (checkdate($month, $day, $year) === false) {
             $month = 1;
             $day = 1;
         }
@@ -48,7 +48,7 @@ class Birthday
      */
     public static function get18()
     {
-        $aDate = (new \DateTime(date('Y-m-d',strtotime('18 years ago'))));
+        $aDate = (new \DateTime(date('Y-m-d', strtotime('18 years ago'))));
         return new self(
             $aDate->format('Y'),
             $aDate->format('m'),

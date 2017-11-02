@@ -14,5 +14,4 @@ class MissingDirsException extends Exception
     {
         parent::__construct(self::MESSAGE, ErrorCodes::MISSING_DIRS);
     }
-
 }

@@ -2,7 +2,6 @@
 
 namespace G4\ValueObject\Exception;
 
-
 use G4\ValueObject\ErrorCodes;
 
 class InvalidBase64EncodedException extends \Exception

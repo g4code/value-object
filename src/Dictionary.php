@@ -111,7 +111,7 @@ class Dictionary
      */
     public function hasKeys($keys)
     {
-        return !empty(array_filter($keys, function($key) {
+        return !empty(array_filter($keys, function ($key) {
             return $this->has($key);
         }));
     }
@@ -131,7 +131,7 @@ class Dictionary
      */
     public function toString(StringInterface $delimiter = null)
     {
-        if($delimiter === null) {
+        if ($delimiter === null) {
             return join("", $this->data);
         }
         return join((string) $delimiter, $this->data);
