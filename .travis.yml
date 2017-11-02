@@ -1,0 +1,16 @@
+language: php
+
+sudo: false
+
+php:
+    - 5.6
+    - 7.0
+    - 7.1
+
+before_script:
+    - composer install --prefer-source
+
+script:
+    - composer psr2
+    - composer test-report
+    - composer code-coverage
