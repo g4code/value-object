@@ -11,4 +11,5 @@ class ErrorCodes
     const INVALID_BASE64_ENCODED        = 60005;
     const INVALID_COUNTRY_CODE          = 60006;
     const INVALID_MD5                   = 60007;
+    const INVALID_GA_CODE               = 60008;
 }
