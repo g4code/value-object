@@ -7,7 +7,7 @@ use G4\ValueObject\Exception\InvalidGaCodeException;
 class GACode
 {
     /**
-     * @var
+     * @var string
      */
     private $value;
 
@@ -26,7 +26,7 @@ class GACode
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function __toString()
     {
