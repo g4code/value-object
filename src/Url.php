@@ -6,6 +6,7 @@ use G4\ValueObject\Exception\InvalidUrlException;
 
 class Url implements StringInterface
 {
+    CONST COLON_PARAMETER         = ':';
     CONST FORWARD_SLASH_PARAMETER = '/';
 
     /**
@@ -44,5 +45,13 @@ class Url implements StringInterface
         $this->value .= self::FORWARD_SLASH_PARAMETER . $value;
 
         return $this;
+    }
+
+    /**
+     * @param $value
+     */
+    public function setPort($value)
+    {
+        $this->value .=  self::COLON_PARAMETER . $value;
     }
 }
