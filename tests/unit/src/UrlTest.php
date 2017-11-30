@@ -41,4 +41,22 @@ class UrlTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals('http://subdomain.domain.com:8080', (string) $url);
     }
+
+    public function testSetQueryParameter()
+    {
+        $url = new Url('http://subdomain.domain.com');
+
+        $url->setQueryParameters(['query' => 'test']);
+
+        $this->assertEquals('http://subdomain.domain.com?query=test', (string) $url);
+    }
+
+    public function testMultipleSetQueryParameters()
+    {
+        $url = new Url('http://subdomain.domain.com');
+
+        $url->setQueryParameters(['query1' => 'test1', 'query2' => 'test2']);
+
+        $this->assertEquals('http://subdomain.domain.com?query1=test1&query2=test2', (string) $url);
+    }
 }
