@@ -32,4 +32,13 @@ class UrlTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals('http://subdomain.domain.com/path1/path2/path3', $url->append('path1')->append('path2')->append('path3'));
     }
+
+    public function testSetPort()
+    {
+        $url = new Url('http://subdomain.domain.com');
+
+        $url->setPort('8080');
+
+        $this->assertEquals('http://subdomain.domain.com:8080', (string) $url);
+    }
 }
