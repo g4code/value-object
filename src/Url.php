@@ -6,6 +6,7 @@ use G4\ValueObject\Exception\InvalidUrlException;
 
 class Url implements StringInterface
 {
+    CONST FORWARD_SLASH_PARAMETER = '/';
 
     /**
      * @var string
@@ -32,5 +33,16 @@ class Url implements StringInterface
     public function __toString()
     {
         return $this->value;
+    }
+
+    /**
+     * @param $value
+     * @return \G4\ValueObject\Url
+     */
+    public function append($value)
+    {
+        $this->value .= self::FORWARD_SLASH_PARAMETER . $value;
+
+        return $this;
     }
 }
