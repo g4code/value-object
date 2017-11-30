@@ -18,4 +18,18 @@ class UrlTest extends \PHPUnit_Framework_TestCase
         $this->expectException(InvalidUrlException::class);
         new Url('www.example.com');
     }
+
+    public function testAppend()
+    {
+        $url = new Url('http://subdomain.domain.com');
+
+        $this->assertEquals('http://subdomain.domain.com/path1', $url->append('path1'));
+    }
+
+    public function testMultipleAppend()
+    {
+        $url = new Url('http://subdomain.domain.com');
+
+        $this->assertEquals('http://subdomain.domain.com/path1/path2/path3', $url->append('path1')->append('path2')->append('path3'));
+    }
 }
