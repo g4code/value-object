@@ -8,6 +8,7 @@ class Url implements StringInterface
 {
     CONST COLON_PARAMETER         = ':';
     CONST FORWARD_SLASH_PARAMETER = '/';
+    CONST QUESTION_MARK_PARAMETER = '?';
 
     /**
      * @var string
@@ -53,5 +54,13 @@ class Url implements StringInterface
     public function setPort($value)
     {
         $this->value .=  self::COLON_PARAMETER . $value;
+    }
+
+    /**
+     * @param array $values
+     */
+    public function setQueryParameters(array $values)
+    {
+        $this->value .= self::QUESTION_MARK_PARAMETER. http_build_query($values);
     }
 }
