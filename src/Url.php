@@ -6,14 +6,24 @@ use G4\ValueObject\Exception\InvalidUrlException;
 
 class Url implements StringInterface
 {
-    const COLON_PARAMETER         = ':';
-    const FORWARD_SLASH_PARAMETER = '/';
-    const QUESTION_MARK_PARAMETER = '?';
+    const COLON         = ':';
+    const FORWARD_SLASH = '/';
+    const QUESTION_MARK = '?';
 
     /**
      * @var string
      */
     private $value;
+    
+    private $port;
+
+    private $path;
+
+    private $query;
+
+    private $scheme;
+
+    private $host;
 
     /**
      * Url constructor.
@@ -22,6 +32,8 @@ class Url implements StringInterface
      */
     public function __construct($value)
     {
+        $this->extractUrlParts($value);
+
         if (!filter_var($value, FILTER_VALIDATE_URL) === false) {
             $this->value = $value;
         } else {
@@ -38,29 +50,56 @@ class Url implements StringInterface
     }
 
     /**
-     * @param $value
+     * @param $values
      * @return \G4\ValueObject\Url
      */
-    public function append($value)
+    public function path($values)
     {
-        $this->value .= self::FORWARD_SLASH_PARAMETER . $value;
+        $this->path = self::FORWARD_SLASH . join(self::FORWARD_SLASH, $values);
 
-        return $this;
+        return new self($this->buildUrl());
     }
 
     /**
      * @param $value
+     * @return \G4\ValueObject\Url
      */
-    public function setPort($value)
+    public function port($value)
     {
-        $this->value .=  self::COLON_PARAMETER . $value;
+        $this->port = self::COLON . $value;
+
+        return new self($this->buildUrl());
     }
 
     /**
      * @param array $values
+     * @return \G4\ValueObject\Url
      */
-    public function setQueryParameters(array $values)
+    public function query(array $values)
     {
-        $this->value .= self::QUESTION_MARK_PARAMETER. http_build_query($values);
+        $this->query = self::QUESTION_MARK. http_build_query($values);
+
+        return new self($this->buildUrl());
+    }
+
+    /**
+     * @return string
+     */
+    private function buildUrl() {
+        return $this->scheme . self::COLON . self::FORWARD_SLASH .self::FORWARD_SLASH . $this->host . $this->port . $this->path . $this->query;
+    }
+
+    /**
+     * @param $value
+     */
+    private function extractUrlParts($value)
+    {
+        $urlParts = parse_url($value);
+
+        $this->scheme = isset($urlParts['scheme']) ? $urlParts['scheme'] : '';
+        $this->host   = isset($urlParts['host']) ? $urlParts['host'] : '';
+        $this->port   = isset($urlParts['port']) ? self::COLON . $urlParts['port'] : '';
+        $this->path   = isset($urlParts['path']) ? $urlParts['path'] : '';
+        $this->query  = isset($urlParts['query']) ? $urlParts['query'] : '';
     }
 }
