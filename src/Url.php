@@ -6,9 +6,9 @@ use G4\ValueObject\Exception\InvalidUrlException;
 
 class Url implements StringInterface
 {
-    CONST COLON_PARAMETER         = ':';
-    CONST FORWARD_SLASH_PARAMETER = '/';
-    CONST QUESTION_MARK_PARAMETER = '?';
+    const COLON_PARAMETER         = ':';
+    const FORWARD_SLASH_PARAMETER = '/';
+    const QUESTION_MARK_PARAMETER = '?';
 
     /**
      * @var string
