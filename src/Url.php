@@ -103,5 +103,4 @@ class Url implements StringInterface
         $this->path   = isset($urlParts['path']) ? $urlParts['path'] : '';
         $this->query  = isset($urlParts['query']) ? $urlParts['query'] : '';
     }
-    
 }
