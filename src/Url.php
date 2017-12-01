@@ -87,7 +87,14 @@ class Url implements StringInterface
      */
     private function buildUrl()
     {
-        return $this->scheme . self::COLON . self::FORWARD_SLASH .self::FORWARD_SLASH . $this->host . $this->port . $this->path . $this->query;
+        return $this->scheme
+            . self::COLON
+            . self::FORWARD_SLASH
+            . self::FORWARD_SLASH
+            . $this->host
+            . $this->port
+            . $this->path
+            . $this->query;
     }
 
     /**
