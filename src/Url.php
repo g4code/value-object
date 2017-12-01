@@ -14,7 +14,7 @@ class Url implements StringInterface
      * @var string
      */
     private $value;
-    
+
     private $port;
 
     private $path;
@@ -85,7 +85,8 @@ class Url implements StringInterface
     /**
      * @return string
      */
-    private function buildUrl() {
+    private function buildUrl()
+    {
         return $this->scheme . self::COLON . self::FORWARD_SLASH .self::FORWARD_SLASH . $this->host . $this->port . $this->path . $this->query;
     }
 
@@ -102,4 +103,5 @@ class Url implements StringInterface
         $this->path   = isset($urlParts['path']) ? $urlParts['path'] : '';
         $this->query  = isset($urlParts['query']) ? $urlParts['query'] : '';
     }
+    
 }
