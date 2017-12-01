@@ -19,44 +19,24 @@ class UrlTest extends \PHPUnit_Framework_TestCase
         new Url('www.example.com');
     }
 
-    public function testAppend()
+    public function testPath()
     {
         $url = new Url('http://subdomain.domain.com');
 
-        $this->assertEquals('http://subdomain.domain.com/path1', $url->append('path1'));
+        $this->assertEquals('http://subdomain.domain.com/path1/path2', (string) $url->path(['path1', 'path2']));
     }
 
-    public function testMultipleAppend()
+    public function testPort()
     {
         $url = new Url('http://subdomain.domain.com');
 
-        $this->assertEquals('http://subdomain.domain.com/path1/path2/path3', $url->append('path1')->append('path2')->append('path3'));
+        $this->assertEquals('http://subdomain.domain.com:8080', (string) $url->port('8080'));
     }
 
-    public function testSetPort()
+    public function testQuery()
     {
         $url = new Url('http://subdomain.domain.com');
 
-        $url->setPort('8080');
-
-        $this->assertEquals('http://subdomain.domain.com:8080', (string) $url);
-    }
-
-    public function testSetQueryParameter()
-    {
-        $url = new Url('http://subdomain.domain.com');
-
-        $url->setQueryParameters(['query' => 'test']);
-
-        $this->assertEquals('http://subdomain.domain.com?query=test', (string) $url);
-    }
-
-    public function testMultipleSetQueryParameters()
-    {
-        $url = new Url('http://subdomain.domain.com');
-
-        $url->setQueryParameters(['query1' => 'test1', 'query2' => 'test2']);
-
-        $this->assertEquals('http://subdomain.domain.com?query1=test1&query2=test2', (string) $url);
+        $this->assertEquals('http://subdomain.domain.com?query1=test1&query2=test2', (string) $url->query(['query1' => 'test1', 'query2' => 'test2']));
     }
 }
