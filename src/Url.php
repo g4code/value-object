@@ -53,7 +53,7 @@ class Url implements StringInterface
      * @param $values
      * @return \G4\ValueObject\Url
      */
-    public function path($values)
+    public function path(...$values)
     {
         $this->path = self::FORWARD_SLASH . join(self::FORWARD_SLASH, $values);
 
@@ -61,10 +61,10 @@ class Url implements StringInterface
     }
 
     /**
-     * @param $value
+     * @param PortNumber $value
      * @return \G4\ValueObject\Url
      */
-    public function port($value)
+    public function port(PortNumber $value)
     {
         $this->port = self::COLON . $value;
 
@@ -72,12 +72,12 @@ class Url implements StringInterface
     }
 
     /**
-     * @param array $values
+     * @param Dictionary $values
      * @return \G4\ValueObject\Url
      */
-    public function query(array $values)
+    public function query(Dictionary $values)
     {
-        $this->query = self::QUESTION_MARK. http_build_query($values);
+        $this->query = self::QUESTION_MARK. http_build_query($values->getAll());
 
         return new self($this->buildUrl());
     }
@@ -106,7 +106,7 @@ class Url implements StringInterface
 
         $this->scheme = isset($urlParts['scheme']) ? $urlParts['scheme'] : '';
         $this->host   = isset($urlParts['host']) ? $urlParts['host'] : '';
-        $this->port   = isset($urlParts['port']) ? self::COLON . $urlParts['port'] : '';
+        $this->port   = isset($urlParts['port']) ? $urlParts['port'] : '';
         $this->path   = isset($urlParts['path']) ? $urlParts['path'] : '';
         $this->query  = isset($urlParts['query']) ? $urlParts['query'] : '';
     }
