@@ -55,7 +55,7 @@ class Url implements StringInterface
      */
     public function path(...$values)
     {
-        $this->path = self::FORWARD_SLASH . join(self::FORWARD_SLASH, $values);
+        $this->path = join(self::FORWARD_SLASH, $values);
 
         return new self($this->buildUrl());
     }
@@ -66,7 +66,7 @@ class Url implements StringInterface
      */
     public function port(PortNumber $value)
     {
-        $this->port = self::COLON . $value;
+        $this->port = $value;
 
         return new self($this->buildUrl());
     }
@@ -77,7 +77,7 @@ class Url implements StringInterface
      */
     public function query(Dictionary $values)
     {
-        $this->query = self::QUESTION_MARK. http_build_query($values->getAll());
+        $this->query = http_build_query($values->getAll());
 
         return new self($this->buildUrl());
     }
@@ -92,9 +92,9 @@ class Url implements StringInterface
             . self::FORWARD_SLASH
             . self::FORWARD_SLASH
             . $this->host
-            . $this->port
-            . $this->path
-            . $this->query;
+            . ($this->port ? self::COLON . $this->port : '')
+            . ($this->path ? self::FORWARD_SLASH . $this->path : '')
+            . ($this->query ? self::QUESTION_MARK . $this->query : '');
     }
 
     /**
@@ -107,7 +107,7 @@ class Url implements StringInterface
         $this->scheme = isset($urlParts['scheme']) ? $urlParts['scheme'] : '';
         $this->host   = isset($urlParts['host']) ? $urlParts['host'] : '';
         $this->port   = isset($urlParts['port']) ? $urlParts['port'] : '';
-        $this->path   = isset($urlParts['path']) ? $urlParts['path'] : '';
+        $this->path   = isset($urlParts['path']) ? ltrim($urlParts['path'], self::FORWARD_SLASH) : '';
         $this->query  = isset($urlParts['query']) ? $urlParts['query'] : '';
     }
 }
