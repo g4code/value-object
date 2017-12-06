@@ -41,4 +41,37 @@ class UrlTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals('http://subdomain.domain.com?query1=test1&query2=test2', (string) $url->query(new Dictionary(['query1' => 'test1', 'query2' => 'test2'])));
     }
+
+    public function testOverridePort()
+    {
+        $url = new Url('http://subdomain.domain.com:8080/path1/path2?query1=test1&query2=test2');
+
+        $this->assertEquals('http://subdomain.domain.com:8880/path1/path2?query1=test1&query2=test2', (string) $url->port(new PortNumber(8880)));
+    }
+
+    public function testOverridePath()
+    {
+        $url = new Url('http://subdomain.domain.com:8080/path1/path2?query1=test1&query2=test2');
+
+        $this->assertEquals('http://subdomain.domain.com:8080/new_path1/new_path2/new_path3?query1=test1&query2=test2', (string) $url->path('new_path1', 'new_path2', 'new_path3'));
+    }
+
+    public function testOverrideQuery()
+    {
+        $url = new Url('http://subdomain.domain.com:8080/path1/path2?query1=test1&query2=test2');
+
+        $this->assertEquals('http://subdomain.domain.com:8080/path1/path2?new_query=test3', (string) $url->query(new Dictionary(['new_query' => 'test3'])));
+    }
+
+    public function testOverrideAllParameters()
+    {
+        $baseUrl = new Url('http://subdomain.domain.com:8080/path1/path2?query1=test1&query2=test2');
+        
+        $url = $baseUrl
+                    ->port(new PortNumber('8081'))
+                    ->path('new_path1', 'new_path2')
+                    ->query(new Dictionary(['new_query1' => 'test1', 'new_query2' => 'test2', 'new_query3' => 'test3']));
+
+        $this->assertEquals('http://subdomain.domain.com:8081/new_path1/new_path2?new_query1=test1&new_query2=test2&new_query3=test3', (string) $url);
+    }
 }
