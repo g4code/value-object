@@ -97,6 +97,17 @@ class DomainName implements StringInterface
     }
 
     /**
+     * @param StringInterface[] ...$value
+     * @return DomainName
+     */
+    public function truncate(StringInterface ...$value)
+    {
+        $parts = explode(self::DELIMITER, $this->__toString());
+        $truncated = array_diff($parts, $value);
+        return new self(join(self::DELIMITER, $truncated));
+    }
+
+    /**
      * @param $value
      * @return bool
      */
