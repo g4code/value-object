@@ -1,6 +1,7 @@
 <?php
 
 namespace G4\ValueObject;
+
 use G4\ValueObject\Exception\MissingVatException;
 
 class Vat
@@ -22,7 +23,7 @@ class Vat
 
     public function __construct(CountryCode $countryCode)
     {
-        if(!array_key_exists((string)$countryCode, $this->vatMap)){
+        if (!array_key_exists((string)$countryCode, $this->vatMap)) {
             throw new MissingVatException((string)$countryCode);
         }
         $this->value = $this->vatMap[(string)$countryCode];
@@ -37,5 +38,4 @@ class Vat
     {
         return $this->value . '%';
     }
-
 }
