@@ -29,4 +29,10 @@ class Email
     {
         return $this->value;
     }
+
+    public function getWithoutPlusAlias()
+    {
+        $this->value = preg_replace("/\+\S+(?=@\w+)/", "", $this->value);
+        return $this->value;
+    }
 }

@@ -61,4 +61,14 @@ class EmailTest extends PHPUnit_Framework_TestCase
             new Email($invalidEmail);
         }
     }
+
+    public function testGetWithoutPlusAlias()
+    {
+        $this->assertEquals('test@gmail.com' , (new Email('test@gmail.com'))->getWithoutPlusAlias());
+        $this->assertEquals('test@gmail.com' , (new Email('test+1@gmail.com'))->getWithoutPlusAlias());
+        $this->assertEquals('test@gmail.com' , (new Email('test+2@gmail.com'))->getWithoutPlusAlias());
+        $this->assertEquals('test@gmail.com' , (new Email('test+56+56@gmail.com'))->getWithoutPlusAlias());
+        $this->assertEquals('test@gmail.com' , (new Email('test+56+5@gmail.com'))->getWithoutPlusAlias());
+    }
+
 }
