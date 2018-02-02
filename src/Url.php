@@ -79,7 +79,7 @@ class Url implements StringInterface
     {
         $valuesArray = $values->getAll();
 
-        if($values->get('q') === '*:*') {
+        if ($values->get('q') === '*:*') {
             unset($valuesArray['q']);
             $this->query = 'q=*' . urlencode(':') . '*&' . http_build_query($valuesArray);
         } else {

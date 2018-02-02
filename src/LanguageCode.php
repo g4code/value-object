@@ -35,7 +35,7 @@ class LanguageCode
      */
     public function __construct($value)
     {
-        if(!in_array($value, $this->validCodes, true)){
+        if (!in_array($value, $this->validCodes, true)) {
             throw new InvalidLanguageCodeException($value);
         }
         $this->value = $value;
@@ -45,5 +45,4 @@ class LanguageCode
     {
         return $this->value;
     }
-
 }
