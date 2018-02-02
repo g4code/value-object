@@ -77,7 +77,14 @@ class Url implements StringInterface
      */
     public function query(Dictionary $values)
     {
-        $this->query = http_build_query($values->getAll());
+        $valuesArray = $values->getAll();
+
+        if($values->get('q') === '*:*') {
+            unset($valuesArray['q']);
+            $this->query = 'q=*' . urlencode(':') . '*&' . http_build_query($valuesArray);
+        } else {
+            $this->query = http_build_query($valuesArray);
+        }
 
         return new self($this->buildUrl());
     }
