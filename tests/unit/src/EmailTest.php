@@ -1,6 +1,7 @@
 <?php
 
 use G4\ValueObject\Email;
+use G4\ValueObject\Exception\InvalidEmailException;
 use G4\ValueObject\Exception\MissingEmailValueException;
 
 class EmailTest extends PHPUnit_Framework_TestCase
@@ -75,6 +76,12 @@ class EmailTest extends PHPUnit_Framework_TestCase
     {
         $this->expectException(MissingEmailValueException::class);
         (new Email(''));
+    }
+
+    public function testSpaceEmail()
+    {
+        $this->expectException(InvalidEmailException::class);
+        (new Email(' '));
     }
 
     public function testNullEmail()

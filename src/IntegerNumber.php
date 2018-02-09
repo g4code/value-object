@@ -24,9 +24,21 @@ class IntegerNumber implements NumberInterface
         $this->value = \intval($value);
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return (string) $this->getValue();
+    }
+
+    /**
+     * @param IntegerNumber $value
+     * @return bool
+     */
+    public function equals(IntegerNumber $value)
+    {
+        return $this->value === $value->getValue();
     }
 
     /*
