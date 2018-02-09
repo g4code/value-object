@@ -12,4 +12,5 @@ class ErrorCodes
     const INVALID_COUNTRY_CODE          = 60006;
     const INVALID_MD5                   = 60007;
     const INVALID_GA_CODE               = 60008;
+    const MISSING_EMAIL_VALUE           = 60009;
 }

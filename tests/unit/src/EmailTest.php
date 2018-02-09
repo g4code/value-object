@@ -1,6 +1,7 @@
 <?php
 
 use G4\ValueObject\Email;
+use G4\ValueObject\Exception\MissingEmailValueException;
 
 class EmailTest extends PHPUnit_Framework_TestCase
 {
@@ -22,7 +23,6 @@ class EmailTest extends PHPUnit_Framework_TestCase
     ];
 
     private $invalidEmails = [
-        '',
         'plainaddress',
         '#@%^%#$@#$@#.com',
         '@example.com',
@@ -71,4 +71,23 @@ class EmailTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('test@gmail.com' , (new Email('test+56+5@gmail.com'))->getWithoutPlusAlias());
     }
 
+    public function testEmptyEmail()
+    {
+        $this->expectException(MissingEmailValueException::class);
+        (new Email(''));
+    }
+
+    public function testNullEmail()
+    {
+        $this->expectException(MissingEmailValueException::class);
+        (new Email(null));
+    }
+
+    public function testEquals()
+    {
+        $email = new Email('test@test.com');
+
+        $this->assertTrue($email->equals(new Email('test@test.com')));
+        $this->assertFalse($email->equals(new Email('tester@test.com')));
+    }
 }
