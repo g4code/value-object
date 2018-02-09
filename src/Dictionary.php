@@ -44,6 +44,14 @@ class Dictionary
     }
 
     /**
+     * @return integer
+     */
+    public function count()
+    {
+        return count($this->data);
+    }
+
+    /**
      * @param $key
      * @return mixed|null
      */
