@@ -32,6 +32,19 @@ class Dictionary
 
     /**
      * @param $key
+     * @return Dictionary
+     */
+    public function remove($key)
+    {
+        if (array_key_exists($key, $this->data)) {
+            unset($this->data[$key]);
+        }
+
+        return new self($this->data);
+    }
+
+    /**
+     * @param $key
      * @return mixed|null
      */
     public function get($key)

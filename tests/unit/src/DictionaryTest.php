@@ -22,7 +22,7 @@ class DictionaryTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($aDictionary->hasNonEmptyValue('a'));
         $this->assertFalse($aDictionary->hasNonEmptyValue('b'));
 
-        $aDictionary = new Dictionary(['a' => ['b'=>'c']]);
+        $aDictionary = new Dictionary(['a' => ['b' => 'c']]);
         $this->assertTrue($aDictionary->hasNonEmptyValue('a'));
 
         $aDictionary = new Dictionary(['a' => '']);
@@ -114,11 +114,11 @@ class DictionaryTest extends \PHPUnit_Framework_TestCase
             'key3' => 'value3',
         ];
         $aDictionary = new Dictionary($data);
-        $this->assertTrue($aDictionary->hasKeys(['key1','key2','key3']));
-        $this->assertFalse($aDictionary->hasKeys(['key432','key342','key5487']));
+        $this->assertTrue($aDictionary->hasKeys(['key1', 'key2', 'key3']));
+        $this->assertFalse($aDictionary->hasKeys(['key432', 'key342', 'key5487']));
 
         $aDictionary = new Dictionary([]);
-        $this->assertFalse($aDictionary->hasKeys(['key1','key2']));
+        $this->assertFalse($aDictionary->hasKeys(['key1', 'key2']));
     }
 
     public function testToString()
@@ -160,12 +160,12 @@ class DictionaryTest extends \PHPUnit_Framework_TestCase
     {
         $aDictionary = new Dictionary(
             [
-                'group1' =>[
+                'group1' => [
                     'key1' => 'value1',
                     'key2' => 'value2',
                     'key3' => 'value3',
                 ],
-                'group2' =>[
+                'group2' => [
                     'key1' => 'value1',
                     'key2' => 'value2',
                     'key3' => 'value3',
@@ -181,5 +181,46 @@ class DictionaryTest extends \PHPUnit_Framework_TestCase
             'key2' => 'value2',
             'key3' => 'value3',
         ], $slicedDictionary->getAll());
+    }
+
+    public function testRemoveIfKeyExists()
+    {
+        $data = [
+            'key1' => 'value1',
+            'key2' => 'value2',
+            'key3' => 'value3',
+        ];
+
+        $dictionary = new Dictionary($data);
+        $this->assertArrayHasKey('key2', $dictionary->getAll());
+        $this->assertCount(3, $dictionary->getAll());
+        $this->assertEquals($data, $dictionary->getAll());
+
+        $dictionaryNew = $dictionary->remove('key2');
+        $this->assertArrayNotHasKey('key2', $dictionaryNew->getAll());
+        $this->assertCount(2, $dictionaryNew->getAll());
+        $this->assertEquals([
+            'key1' => 'value1',
+            'key3' => 'value3',
+        ], $dictionary->getAll());
+    }
+
+    public function testRemoveIfKeyDoesNotExist()
+    {
+        $data = [
+            'key1' => 'value1',
+            'key2' => 'value2',
+            'key3' => 'value3',
+        ];
+
+        $dictionary = new Dictionary($data);
+        $this->assertArrayNotHasKey('key4', $dictionary->getAll());
+        $this->assertCount(3, $dictionary->getAll());
+        $this->assertEquals($data, $dictionary->getAll());
+
+        $dictionaryNew = $dictionary->remove('key4');
+        $this->assertArrayNotHasKey('key4', $dictionaryNew->getAll());
+        $this->assertCount(3, $dictionaryNew->getAll());
+        $this->assertEquals($data, $dictionary->getAll());
     }
 }
