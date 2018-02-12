@@ -10,12 +10,9 @@ class MissingEmailValueException extends \Exception
 
     /**
      * MissingEmailValueException constructor.
-     * @param string $value
      */
-    public function __construct($value)
+    public function __construct()
     {
-        $message = sprintf(self::ERROR_MESSAGE, \var_export($value, true));
-        $code = ErrorCodes::MISSING_EMAIL_VALUE;
-        parent::__construct($message, $code);
+        parent::__construct(self::ERROR_MESSAGE, ErrorCodes::MISSING_EMAIL_VALUE);
     }
 }

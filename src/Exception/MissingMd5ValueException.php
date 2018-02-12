@@ -9,13 +9,10 @@ class MissingMd5ValueException extends \Exception
     const ERROR_MESSAGE = 'Md5 value is missing.';
 
     /**
-     * MissingEmailValueException constructor.
-     * @param string $value
+     * MissingMd5ValueException constructor.
      */
-    public function __construct($value)
+    public function __construct()
     {
-        $message = sprintf(self::ERROR_MESSAGE, \var_export($value, true));
-        $code = ErrorCodes::MISSING_MD5_VALUE;
-        parent::__construct($message, $code);
+        parent::__construct(self::ERROR_MESSAGE, ErrorCodes::MISSING_MD5_VALUE);
     }
 }

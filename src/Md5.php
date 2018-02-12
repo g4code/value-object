@@ -22,7 +22,7 @@ class Md5
     public function __construct($value)
     {
         if (empty($value)) {
-            throw new MissingMd5ValueException($value);
+            throw new MissingMd5ValueException();
         }
 
         if (!preg_match('/^[a-f0-9]{32}$/', $value)) {
