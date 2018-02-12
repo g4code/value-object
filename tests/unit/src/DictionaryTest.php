@@ -235,4 +235,26 @@ class DictionaryTest extends \PHPUnit_Framework_TestCase
         $dictionary = new Dictionary($data);
         $this->assertEquals(3, $dictionary->count());
     }
+
+    public function testEquals()
+    {
+        $data = [
+            'key1' => 'value1',
+            'key2' => 'value2',
+            'key3' => 'value3',
+        ];
+
+        $dictionary = new Dictionary($data);
+
+        $this->assertTrue($dictionary->equals((new Dictionary($data))));
+        $this->assertTrue($dictionary->equals((new Dictionary([
+            'key1' => 'value1',
+            'key2' => 'value2',
+            'key3' => 'value3',
+        ]))));
+        $this->assertFalse($dictionary->equals((new Dictionary([
+            'key1' => 'value1',
+            'key3' => 'value3',
+        ]))));
+    }
 }

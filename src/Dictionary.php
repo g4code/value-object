@@ -52,6 +52,15 @@ class Dictionary
     }
 
     /**
+     * @param Dictionary $data
+     * @return bool
+     */
+    public function equals(Dictionary $data)
+    {
+        return $this->data === $data->getAll();
+    }
+
+    /**
      * @param $key
      * @return mixed|null
      */
