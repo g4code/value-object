@@ -10,6 +10,7 @@ class Environment implements StringInterface
     const STAGE         = 'stage';
     const DEV           = 'dev';
     const LOCAL         = 'local';
+    const VAGRANT       = 'vagrant';
 
     /**
      * @var string
@@ -51,7 +52,8 @@ class Environment implements StringInterface
 
     public function isLocal()
     {
-        return $this->value === self::LOCAL;
+        return $this->value === self::LOCAL
+            || $this->value === self::VAGRANT;
     }
 
     private function isValid($value)
@@ -61,6 +63,7 @@ class Environment implements StringInterface
             self::STAGE,
             self::DEV,
             self::LOCAL,
+            self::VAGRANT,
         ]);
     }
 }
