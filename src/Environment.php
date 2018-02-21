@@ -7,6 +7,7 @@ use G4\ValueObject\Exception\InvalidEnvironment;
 class Environment implements StringInterface
 {
     const PRODUCTION    = 'production';
+    const BETA          = 'beta';
     const STAGE         = 'stage';
     const DEV           = 'dev';
     const LOCAL         = 'local';
@@ -40,6 +41,11 @@ class Environment implements StringInterface
         return $this->value === self::PRODUCTION;
     }
 
+    public function isBeta()
+    {
+        return $this->value === self::BETA;
+    }
+
     public function isStage()
     {
         return $this->value === self::STAGE;
@@ -60,6 +66,7 @@ class Environment implements StringInterface
     {
         return in_array($value, [
             self::PRODUCTION,
+            self::BETA,
             self::STAGE,
             self::DEV,
             self::LOCAL,
