@@ -31,14 +31,16 @@ class Dictionary
     }
 
     /**
-     * @param $key
+     * @param array ...$keys
      * @return Dictionary
      */
-    public function remove($key)
+    public function remove(...$keys)
     {
-        if (array_key_exists($key, $this->data)) {
-            unset($this->data[$key]);
-        }
+        count($keys) > 1
+            ?   array_map(function($key) {
+                    $this->removeKey($key);
+                }, $keys)
+            :   $this->removeKey(reset($keys));
 
         return new self($this->data);
     }
@@ -165,5 +167,15 @@ class Dictionary
             return join("", $this->data);
         }
         return join((string) $delimiter, $this->data);
+    }
+
+    /**
+     * @param $key
+     */
+    private function removeKey($key)
+    {
+        if (array_key_exists($key, $this->data)) {
+            unset($this->data[$key]);
+        }
     }
 }

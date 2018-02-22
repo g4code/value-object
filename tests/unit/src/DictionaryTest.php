@@ -183,6 +183,40 @@ class DictionaryTest extends \PHPUnit_Framework_TestCase
         ], $slicedDictionary->getAll());
     }
 
+    public function testCount()
+    {
+        $data = [
+            'key1' => 'value1',
+            'key2' => 'value2',
+            'key3' => 'value3',
+        ];
+
+        $dictionary = new Dictionary($data);
+        $this->assertEquals(3, $dictionary->count());
+    }
+
+    public function testEquals()
+    {
+        $data = [
+            'key1' => 'value1',
+            'key2' => 'value2',
+            'key3' => 'value3',
+        ];
+
+        $dictionary = new Dictionary($data);
+
+        $this->assertTrue($dictionary->equals(new Dictionary($data)));
+        $this->assertTrue($dictionary->equals(new Dictionary([
+            'key1' => 'value1',
+            'key2' => 'value2',
+            'key3' => 'value3',
+        ])));
+        $this->assertFalse($dictionary->equals(new Dictionary([
+            'key1' => 'value1',
+            'key3' => 'value3',
+        ])));
+    }
+
     public function testRemoveIfKeyExists()
     {
         $data = [
@@ -224,37 +258,50 @@ class DictionaryTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($data, $dictionary->getAll());
     }
 
-    public function testCount()
+    public function testRemoveMultipleIfKeyExists()
     {
         $data = [
             'key1' => 'value1',
             'key2' => 'value2',
             'key3' => 'value3',
+            'key4' => 'value4',
         ];
 
         $dictionary = new Dictionary($data);
-        $this->assertEquals(3, $dictionary->count());
+        $this->assertArrayHasKey('key2', $dictionary->getAll());
+        $this->assertArrayHasKey('key4', $dictionary->getAll());
+        $this->assertCount(4, $dictionary->getAll());
+        $this->assertEquals($data, $dictionary->getAll());
+
+        $dictionaryNew = $dictionary->remove('key2', 'key4');
+        $this->assertArrayNotHasKey('key2', $dictionaryNew->getAll());
+        $this->assertArrayNotHasKey('key4', $dictionaryNew->getAll());
+        $this->assertCount(2, $dictionaryNew->getAll());
+        $this->assertEquals([
+            'key1' => 'value1',
+            'key3' => 'value3',
+        ], $dictionary->getAll());
     }
 
-    public function testEquals()
+    public function testRemoveMultipleIfKeyDoesNotExist()
     {
         $data = [
             'key1' => 'value1',
             'key2' => 'value2',
             'key3' => 'value3',
+            'key4' => 'value4',
         ];
 
         $dictionary = new Dictionary($data);
+        $this->assertArrayNotHasKey('key5', $dictionary->getAll());
+        $this->assertArrayNotHasKey('key6', $dictionary->getAll());
+        $this->assertCount(4, $dictionary->getAll());
+        $this->assertEquals($data, $dictionary->getAll());
 
-        $this->assertTrue($dictionary->equals((new Dictionary($data))));
-        $this->assertTrue($dictionary->equals((new Dictionary([
-            'key1' => 'value1',
-            'key2' => 'value2',
-            'key3' => 'value3',
-        ]))));
-        $this->assertFalse($dictionary->equals((new Dictionary([
-            'key1' => 'value1',
-            'key3' => 'value3',
-        ]))));
+        $dictionaryNew = $dictionary->remove('key5', 'key6');
+        $this->assertArrayNotHasKey('key5', $dictionaryNew->getAll());
+        $this->assertArrayNotHasKey('key6', $dictionaryNew->getAll());
+        $this->assertCount(4, $dictionaryNew->getAll());
+        $this->assertEquals($data, $dictionary->getAll());
     }
 }
