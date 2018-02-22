@@ -37,9 +37,9 @@ class Dictionary
     public function remove(...$keys)
     {
         count($keys) > 1
-            ?   array_map(function($key) {
+            ?   array_map(function ($key) {
                     $this->removeKey($key);
-                }, $keys)
+            }, $keys)
             :   $this->removeKey(reset($keys));
 
         return new self($this->data);
