@@ -14,4 +14,6 @@ class ErrorCodes
     const INVALID_GA_CODE               = 60008;
     const MISSING_EMAIL_VALUE           = 60009;
     const MISSING_MD5_VALUE             = 60010;
+    const MISSING_SHA1_VALUE            = 60011;
+    const INVALID_SHA1_VALUE            = 60012;
 }
