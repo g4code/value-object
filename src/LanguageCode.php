@@ -25,6 +25,7 @@ class LanguageCode
         'it_IT',
         'nb_NO',
         'sr_RS',
+        'sr_RS@latin',
         'sv_SE',
     ];
 

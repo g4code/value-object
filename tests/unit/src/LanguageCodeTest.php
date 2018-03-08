@@ -9,6 +9,7 @@ class LanguageCodeTest extends PHPUnit_Framework_TestCase
     public function testToString()
     {
         $this->assertEquals('fr_FR', (string)new LanguageCode('fr_FR'));
+        $this->assertEquals('sr_RS@latin', (string)new LanguageCode('sr_RS@latin'));
     }
 
     public function testExceptionInvalidCode()
