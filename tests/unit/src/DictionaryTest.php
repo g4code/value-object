@@ -6,6 +6,7 @@ use G4\ValueObject\Exception\InvalidDictionaryException;
 
 class DictionaryTest extends \PHPUnit_Framework_TestCase
 {
+
     public function testHas()
     {
         $aDictionary = new Dictionary(['a' => 'a path']);
@@ -303,5 +304,16 @@ class DictionaryTest extends \PHPUnit_Framework_TestCase
         $this->assertArrayNotHasKey('key6', $dictionaryNew->getAll());
         $this->assertCount(4, $dictionaryNew->getAll());
         $this->assertEquals($data, $dictionary->getAll());
+    }
+
+    public function testHasNotNullValue()
+    {
+        $dictionary = new Dictionary([
+            'key1' => 'value',
+            'key2' => null,
+        ]);
+
+        $this->assertTrue($dictionary->hasNotNullValue('key1'));
+        $this->assertFalse($dictionary->hasNotNullValue('key2'));
     }
 }

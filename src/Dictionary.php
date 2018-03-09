@@ -110,6 +110,15 @@ class Dictionary
     }
 
     /**
+     * @param $key
+     * @return bool
+     */
+    public function hasNotNullValue($key)
+    {
+        return $this->has($key) && $this->data[$key] !== null;
+    }
+
+    /**
      * @param array ...$keys
      * @return bool
      */
