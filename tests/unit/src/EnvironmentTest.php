@@ -29,5 +29,6 @@ class EnvironmentTest extends PHPUnit_Framework_TestCase
         $this->assertTrue((new Environment('dev'))->isDev());
         $this->assertTrue((new Environment('local'))->isLocal());
         $this->assertTrue((new Environment('vagrant'))->isLocal());
+        $this->assertTrue((new Environment('beta'))->isBeta());
     }
 }
