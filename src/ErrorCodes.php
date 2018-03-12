@@ -16,4 +16,6 @@ class ErrorCodes
     const MISSING_MD5_VALUE             = 60010;
     const MISSING_SHA1_VALUE            = 60011;
     const INVALID_SHA1_VALUE            = 60012;
+    const MISSING_HTTP_METHOD_VALUE     = 60013;
+    const INVALID_HTTP_METHOD_VALUE     = 60014;
 }
