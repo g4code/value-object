@@ -24,6 +24,7 @@ class LanguageCode
         'it_CH',
         'it_IT',
         'nb_NO',
+        'ro-RO',
         'ru_RU',
         'sr_RS',
         'sr_RS@latin',
