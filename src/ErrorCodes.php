@@ -18,4 +18,7 @@ class ErrorCodes
     const INVALID_SHA1_VALUE            = 60012;
     const MISSING_HTTP_METHOD_VALUE     = 60013;
     const INVALID_HTTP_METHOD_VALUE     = 60014;
+    const MISSING_COORDINATE_VALUE      = 60015;
+    const INVALID_LATITUDE_VALUE        = 60016;
+    const INVALID_LONGITUDE_VALUE       = 60017;
 }
