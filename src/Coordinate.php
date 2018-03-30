@@ -32,11 +32,11 @@ class Coordinate implements StringInterface
             throw new MissingCoordinateValueException();
         }
 
-        if (!$this->isValidLatitude($latitude) || !self::isValidLatitude($latitude)) {
+        if (!self::isValidLatitude($latitude)) {
             throw new InvalidCoordinateLatitudeValueException($latitude);
         }
 
-        if (!$this->isValidLongitude($longitude) || !self::isValidLongitude($longitude)) {
+        if (!self::isValidLongitude($longitude)) {
             throw new InvalidCoordinateLongitudeValueException($longitude);
         }
 
@@ -103,6 +103,6 @@ class Coordinate implements StringInterface
      */
     public static function isValidLongitude($longitude)
     {
-        return preg_match('/^-?([1]?[1-7][1-9]|[1]?[1-8][0]|[1-9]?[0-9])\.{1}\d/', $longitude) == 1;
+        return preg_match('/^-?([1]?[0-7][1-9]|[1]?[1-8][0]|[1-9]?[0-9])\.{1}\d/', $longitude) == 1;
     }
 }

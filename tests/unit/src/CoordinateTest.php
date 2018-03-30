@@ -10,6 +10,11 @@ class CoordinateTest extends PHPUnit_Framework_TestCase
 {
     public function testWithValidCoordinate()
     {
+        $coordinate = new Coordinate('-56.130366', '-106.34677099999999');
+        $this->assertEquals('-56.130366,-106.34677099999999', (string) $coordinate);
+        $this->assertEquals('-56.130366', $coordinate->getLatitude());
+        $this->assertEquals('-106.34677099999999', $coordinate->getLongitude());
+
         $coordinate = new Coordinate('43.333146', '21.930728');
         $this->assertEquals('43.333146,21.930728', (string) $coordinate);
         $this->assertEquals('43.333146', $coordinate->getLatitude());
