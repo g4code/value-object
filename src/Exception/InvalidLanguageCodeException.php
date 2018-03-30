@@ -6,7 +6,7 @@ class InvalidLanguageCodeException extends \Exception
 {
     const ERROR_UUID = 616;
 
-    const ERROR_MESSAGE = 'Language code is invalid.';
+    const ERROR_MESSAGE = 'Language code is invalid: %s';
 
     public function __construct($value)
     {

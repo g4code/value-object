@@ -42,6 +42,13 @@ class UrlTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('http://subdomain.domain.com?query1=test1&query2=test2', (string) $url->query(new Dictionary(['query1' => 'test1', 'query2' => 'test2'])));
     }
 
+    public function testQueryWithSolrAllParameter()
+    {
+        $url = new Url('http://subdomain.domain.com');
+
+        $this->assertEquals('http://subdomain.domain.com?q=*%3A*&', (string) $url->query(new Dictionary(['q' => '*:*'])));
+    }
+
     public function testOverridePort()
     {
         $url = new Url('http://subdomain.domain.com:8080/path1/path2?query1=test1&query2=test2');

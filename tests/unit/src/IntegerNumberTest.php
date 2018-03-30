@@ -56,4 +56,15 @@ class IntegerNumberTest extends \PHPUnit_Framework_TestCase
         $this->expectException(InvalidIntegerNumberException::class);
         new IntegerNumber('');
     }
+
+    public function testEquals()
+    {
+        $integerNumber = new IntegerNumber(12);
+        $this->assertTrue($integerNumber->equals(new IntegerNumber(12)));
+        $this->assertFalse($integerNumber->equals(new IntegerNumber(10)));
+
+        $integerNumber = new IntegerNumber("12");
+        $this->assertTrue($integerNumber->equals(new IntegerNumber(12)));
+        $this->assertFalse($integerNumber->equals(new IntegerNumber(10)));
+    }
 }

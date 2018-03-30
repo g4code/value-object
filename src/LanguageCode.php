@@ -24,7 +24,10 @@ class LanguageCode
         'it_CH',
         'it_IT',
         'nb_NO',
+        'ro_RO',
+        'ru_RU',
         'sr_RS',
+        'sr_RS@latin',
         'sv_SE',
     ];
 
@@ -35,7 +38,7 @@ class LanguageCode
      */
     public function __construct($value)
     {
-        if(!in_array($value, $this->validCodes, true)){
+        if (!in_array($value, $this->validCodes, true)) {
             throw new InvalidLanguageCodeException($value);
         }
         $this->value = $value;
@@ -45,5 +48,4 @@ class LanguageCode
     {
         return $this->value;
     }
-
 }

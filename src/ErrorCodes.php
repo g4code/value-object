@@ -12,4 +12,13 @@ class ErrorCodes
     const INVALID_COUNTRY_CODE          = 60006;
     const INVALID_MD5                   = 60007;
     const INVALID_GA_CODE               = 60008;
+    const MISSING_EMAIL_VALUE           = 60009;
+    const MISSING_MD5_VALUE             = 60010;
+    const MISSING_SHA1_VALUE            = 60011;
+    const INVALID_SHA1_VALUE            = 60012;
+    const MISSING_HTTP_METHOD_VALUE     = 60013;
+    const INVALID_HTTP_METHOD_VALUE     = 60014;
+    const MISSING_COORDINATE_VALUE      = 60015;
+    const INVALID_LATITUDE_VALUE        = 60016;
+    const INVALID_LONGITUDE_VALUE       = 60017;
 }

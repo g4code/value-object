@@ -31,6 +31,38 @@ class Dictionary
     }
 
     /**
+     * @param array ...$keys
+     * @return Dictionary
+     */
+    public function remove(...$keys)
+    {
+        count($keys) > 1
+            ?   array_map(function ($key) {
+                    $this->removeKey($key);
+            }, $keys)
+            :   $this->removeKey(reset($keys));
+
+        return new self($this->data);
+    }
+
+    /**
+     * @return integer
+     */
+    public function count()
+    {
+        return count($this->data);
+    }
+
+    /**
+     * @param Dictionary $data
+     * @return bool
+     */
+    public function equals(Dictionary $data)
+    {
+        return $this->data === $data->getAll();
+    }
+
+    /**
      * @param $key
      * @return mixed|null
      */
@@ -75,6 +107,15 @@ class Dictionary
     public function hasNonEmptyValue($key)
     {
         return $this->has($key) && !empty($this->data[$key]);
+    }
+
+    /**
+     * @param $key
+     * @return bool
+     */
+    public function hasNotNullValue($key)
+    {
+        return $this->has($key) && $this->data[$key] !== null;
     }
 
     /**
@@ -135,5 +176,15 @@ class Dictionary
             return join("", $this->data);
         }
         return join((string) $delimiter, $this->data);
+    }
+
+    /**
+     * @param $key
+     */
+    private function removeKey($key)
+    {
+        if (array_key_exists($key, $this->data)) {
+            unset($this->data[$key]);
+        }
     }
 }
