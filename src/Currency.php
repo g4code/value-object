@@ -25,7 +25,7 @@ class Currency
             'title' => 'Danish krone',
             'symbol' => 'kr'
         ],
-        'NKK' => [
+        'NOK' => [
             'title' => 'Norwegian krone',
             'symbol' => 'kr'
         ],
