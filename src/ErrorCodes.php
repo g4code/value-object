@@ -21,4 +21,6 @@ class ErrorCodes
     const MISSING_COORDINATE_VALUE      = 60015;
     const INVALID_LATITUDE_VALUE        = 60016;
     const INVALID_LONGITUDE_VALUE       = 60017;
+    const MISSING_TIMESTAMP_VALUE       = 60018;
+    const INVALID_TIMESTAMP_VALUE       = 60019;
 }
