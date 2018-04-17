@@ -23,4 +23,5 @@ class ErrorCodes
     const INVALID_LONGITUDE_VALUE       = 60017;
     const MISSING_TIMESTAMP_VALUE       = 60018;
     const INVALID_TIMESTAMP_VALUE       = 60019;
+    const INVALID_ASSETS_URL_VALUE      = 60020;
 }
