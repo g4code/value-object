@@ -55,10 +55,10 @@ class AssetsUrl implements StringInterface
     }
 
     /**
-     * @param StringInterface $prepend
+     * @param $prepend
      * @return AssetsUrl
      */
-    public function prepend(StringInterface $prepend = self::DEFAULT_PREPEND_VALUE)
+    public function prepend($prepend = self::DEFAULT_PREPEND_VALUE)
     {
         $modified = $prepend . $this->value;
         return new AssetsUrl($modified);
