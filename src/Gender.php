@@ -104,4 +104,12 @@ class Gender
     {
         return new self(self::FEMALE);
     }
+
+    /**
+     * @return Gender
+     */
+    public function createOpposite()
+    {
+        return new self($this->getOpposite());
+    }
 }
