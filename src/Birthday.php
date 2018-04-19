@@ -76,4 +76,14 @@ class Birthday
         $aDate = (new \DateTime())->setDate($this->year, $this->month, $this->day);
         return $aDate->format($dateFormat);
     }
+
+    /**
+     * @param $birthdayString
+     * @return Birthday
+     */
+    public static function makeFromString($birthdayString)
+    {
+        list($year, $month, $day) = explode('-', $birthdayString);
+        return new self($year, $month, $day);
+    }
 }

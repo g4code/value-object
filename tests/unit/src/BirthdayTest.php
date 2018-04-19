@@ -70,4 +70,13 @@ class BirthdayTest extends PHPUnit_Framework_TestCase {
     {
         return new Birthday($year, $month, $day);
     }
+
+    public function testMakeFromString()
+    {
+        $birthdayString = '1986-10-19';
+        $birthday       = Birthday::makeFromString($birthdayString);
+        
+        $this->assertInstanceOf(Birthday::class, $birthday);
+        $this->assertEquals($birthdayString, $birthday->format());
+    }
 }
