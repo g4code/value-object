@@ -10,7 +10,7 @@ class ArrayList
     private $data;
 
     /**
-     * Dictionary constructor.
+     * ArrayList constructor.
      * @param array $data
      */
     public function __construct(array $data)
@@ -19,35 +19,11 @@ class ArrayList
     }
 
     /**
-     * @param $key
      * @param $value
-     * @return $this
      */
-    public function add($key, $value)
+    public function add($value)
     {
-        $this->data[$key] = $value;
-        return $this;
-    }
-
-    /**
-     * @param $key
-     * @return ArrayList
-     */
-    public function remove($key)
-    {
-        if (array_key_exists($key, $this->data)) {
-            unset($this->data[$key]);
-        }
-
-        return new self($this->data);
-    }
-
-    /**
-     * @return array
-     */
-    public function getAll()
-    {
-        return $this->data;
+        $this->data[] = $value;
     }
 
     /**
@@ -68,52 +44,36 @@ class ArrayList
     }
 
     /**
-     * @param $key
-     * @return mixed|null
+     * @return array
      */
-    public function get($key)
+    public function getAll()
     {
-        return $this->has($key)
-            ? $this->data[$key]
-            : null;
+        return $this->data;
     }
 
     /**
-     * @param $key
+     * @param $value
      * @return bool
      */
-    public function has($key)
+    public function has($value)
     {
-        return array_key_exists($key, $this->data);
+        return in_array($value, $this->data);
     }
 
     /**
-     * @param $keys
-     * @return bool
+     * @param $value
+     * @return ArrayList
      */
-    public function hasKeys($keys)
+    public function remove($value)
     {
-        return !empty(array_filter($keys, function ($key) {
-            return $this->has($key);
-        }));
-    }
+        $data   = $this->data;
+        $key    = array_search($value, $this->data);
 
-    /**
-     * @param $key
-     * @return bool
-     */
-    public function hasNonEmptyValue($key)
-    {
-        return $this->has($key) && !empty($this->data[$key]);
-    }
-
-    /**
-     * @param $key
-     * @return bool
-     */
-    public function hasNotNullValue($key)
-    {
-        return $this->has($key) && $this->data[$key] !== null;
+        if ($key !== false) {
+            unset($data[$key]);
+            $data = array_values($data);
+        }
+        return new self($data);
     }
 
     /**
@@ -123,7 +83,7 @@ class ArrayList
     public function toString(StringInterface $delimiter = null)
     {
         if ($delimiter === null) {
-            return join("", $this->data);
+            $delimiter = '';
         }
         return join((string) $delimiter, $this->data);
     }
