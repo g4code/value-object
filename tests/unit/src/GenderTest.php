@@ -50,6 +50,7 @@ class GenderTest extends PHPUnit_Framework_TestCase {
     public function testToStringMale()
     {
         $this->assertEquals("M", (string)$this->genderFactory("M"));
+        $this->assertEquals("M", $this->genderFactory("M")->getGender());
     }
 
 
@@ -108,6 +109,21 @@ class GenderTest extends PHPUnit_Framework_TestCase {
         $this->genderFactory('some_unknowN_@gender!');
     }
 
+    public function testOpositeMaleToFemale()
+    {
+        $aMale      = Gender::createMale();
+        $aFemale    = $aMale->createOpposite();
+        $this->assertInstanceOf(Gender::class, $aFemale);
+        $this->assertEquals('F', (string) $aFemale);
+    }
+
+    public function testOpositeFemaleToMale()
+    {
+        $aFemale    = Gender::createFemale();
+        $aMale      = $aFemale->createOpposite();
+        $this->assertInstanceOf(Gender::class, $aMale);
+        $this->assertEquals('M', (string) $aMale);
+    }
 
     //static methods
     public function testCreateMale()
