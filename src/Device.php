@@ -15,7 +15,7 @@ class Device
 
     public function __construct($value)
     {
-        if(!$this->validateDevice($value)){
+        if (!$this->validateDevice($value)) {
             throw new InvalidDeviceValueException($value);
         }
         $this->value = $value;
@@ -48,5 +48,4 @@ class Device
             $value === self::TABLET ||
             $value === self::DESKTOP;
     }
-
 }
