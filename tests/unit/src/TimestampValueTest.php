@@ -29,6 +29,7 @@ class TimestampValueTest extends \PHPUnit_Framework_TestCase
         $now          = time();
         $timestampInt = new TimestampValue($now);
         $this->assertEquals($now, (string) $timestampInt);
+        $this->assertEquals($now, $timestampInt->getValue());
 
         $timestampString = new TimestampValue('1523441442');
         $this->assertEquals('1523441442', (string) $timestampString);
