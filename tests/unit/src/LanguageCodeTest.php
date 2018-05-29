@@ -18,4 +18,12 @@ class LanguageCodeTest extends PHPUnit_Framework_TestCase
         $this->expectException(InvalidLanguageCodeException::class);
         new LanguageCode('laaaanguage');
     }
+
+    public function testEquals()
+    {
+        $languageCode = new LanguageCode('fr_FR');
+
+        $this->assertTrue($languageCode->equals(new LanguageCode('fr_FR')));
+        $this->assertFalse($languageCode->equals(new LanguageCode('de_DE')));
+    }
 }

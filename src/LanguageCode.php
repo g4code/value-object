@@ -44,8 +44,20 @@ class LanguageCode
         $this->value = $value;
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return $this->value;
+    }
+
+    /**
+     * @param LanguageCode $value
+     * @return bool
+     */
+    public function equals(LanguageCode $value)
+    {
+        return $this->value === $value->__toString();
     }
 }
