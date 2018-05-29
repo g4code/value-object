@@ -2,7 +2,6 @@
 
 use G4\ValueObject\Dictionary;
 use G4\ValueObject\StringLiteral;
-use G4\ValueObject\Exception\InvalidDictionaryException;
 
 class DictionaryTest extends \PHPUnit_Framework_TestCase
 {
