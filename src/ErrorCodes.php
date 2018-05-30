@@ -25,4 +25,5 @@ class ErrorCodes
     const INVALID_TIMESTAMP_VALUE       = 60019;
     const INVALID_ASSETS_URL_VALUE      = 60020;
     const INVALID_DEVICE_VALUE          = 60021;
+    const INVALID_LOCATION_VALUE        = 60022;
 }
