@@ -15,7 +15,7 @@ class Currency
         ],
         'CHF' => [
             'title' => 'Swiss Franc',
-            'symbol' => null
+            'symbol' => 'Fr'
         ],
         'USD' => [
             'title' => 'US Dollar',
