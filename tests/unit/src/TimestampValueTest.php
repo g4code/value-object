@@ -41,4 +41,10 @@ class TimestampValueTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('2018-04-11', $timestampString->getFormatted());
         $this->assertEquals('April 11 / 12:10', $timestampString->getFormatted('F j / g:i'));
     }
+
+    public function testGetMilliseconds()
+    {
+        $timestampString = new TimestampValue('1523441442');
+        $this->assertEquals('1523441442000', $timestampString->getMilliseconds());
+    }
 }

@@ -57,6 +57,14 @@ class TimestampValue implements StringInterface, NumberInterface
     }
 
     /**
+     * @return string
+     */
+    public function getMilliseconds()
+    {
+        return (int) $this->value * 1000;
+    }
+
+    /**
      * @param $timestamp
      * @return bool
      */
