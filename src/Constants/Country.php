@@ -120,6 +120,7 @@ class Country
         'KZ' => 'Kazakhstan',
         'KE' => 'Kenya',
         'KI' => 'Kiribati',
+        'KP' => 'Korea, Democratic People\'s Republic of',
         'KR' => 'Korea',
         'KW' => 'Kuwait',
         'KG' => 'Kyrgyzstan',
