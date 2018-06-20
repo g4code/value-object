@@ -24,6 +24,22 @@ class CoordinateTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('43.333146,21.930728', (string) $coordinate);
         $this->assertEquals('43.333146', $coordinate->getLatitude());
         $this->assertEquals('21.930728', $coordinate->getLongitude());
+
+
+        $coordinate = new Coordinate('0.0000', '25.0000');
+        $this->assertEquals('0.0000,25.0000', (string) $coordinate);
+        $this->assertEquals('0.0000', $coordinate->getLatitude());
+        $this->assertEquals('25.0000', $coordinate->getLongitude());
+
+        $coordinate = new Coordinate('-90.0000', '-180.0000');
+        $this->assertEquals('-90.0000,-180.0000', (string) $coordinate);
+        $this->assertEquals('-90.0000', $coordinate->getLatitude());
+        $this->assertEquals('-180.0000', $coordinate->getLongitude());
+
+        $coordinate = new Coordinate('90.0000', '180.0000');
+        $this->assertEquals('90.0000,180.0000', (string) $coordinate);
+        $this->assertEquals('90.0000', $coordinate->getLatitude());
+        $this->assertEquals('180.0000', $coordinate->getLongitude());
     }
 
     public function testRound()
@@ -58,25 +74,46 @@ class CoordinateTest extends PHPUnit_Framework_TestCase
 
     public function testWithEmptyLatitudeCoordinate()
     {
-        $this->expectException(InvalidCoordinateLatitudeValueException::class);
+        $this->expectException(MissingCoordinateValueException::class);
         new Coordinate(' ', '21.930728');
     }
 
     public function testWithEmptyLongitudeCoordinate()
     {
-        $this->expectException(InvalidCoordinateLongitudeValueException::class);
+        $this->expectException(MissingCoordinateValueException::class);
         new Coordinate('43.333146', ' ');
     }
 
-    public function testLatitudeExceptionWithInteger()
+    public function testWithInvalidCoordinates()
     {
         $this->expectException(InvalidCoordinateLatitudeValueException::class);
-        new Coordinate(43, 21.930728);
+        new Coordinate('103.333146', '201.930728');
+
+        $this->expectException(InvalidCoordinateLatitudeValueException::class);
+        new Coordinate('-95.333146', '-190.930728');
     }
 
-    public function testLongitudeExceptionWithInteger()
+    public function testWithStringLatitudeCoordinate()
     {
-        $this->expectException(InvalidCoordinateLongitudeValueException::class);
-        new Coordinate(43.333146, 21);
+        $this->expectException(MissingCoordinateValueException::class);
+        new Coordinate('one', '21.930728');
     }
+
+    public function testWithStringLongitudeCoordinate()
+    {
+        $this->expectException(MissingCoordinateValueException::class);
+        new Coordinate('43.333146', 'ten');
+    }
+
+//    public function testLatitudeExceptionWithInteger()
+//    {
+//        $this->expectException(InvalidCoordinateLatitudeValueException::class);
+//        new Coordinate(43, 21.930728);
+//    }
+
+//    public function testLongitudeExceptionWithInteger()
+//    {
+//        $this->expectException(InvalidCoordinateLongitudeValueException::class);
+//        new Coordinate(43.333146, 21);
+//    }
 }

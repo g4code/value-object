@@ -8,6 +8,11 @@ use G4\ValueObject\Exception\InvalidCoordinateLongitudeValueException;
 
 class Coordinate implements StringInterface
 {
+    const LATITUDE_MIN_VALUE  = -90;
+    const LATITUDE_MAX_VALUE  = 90;
+    const LONGITUDE_MIN_VALUE = -180;
+    const LONGITUDE_MAX_VALUE = 180;
+
     /**
      * @var string
      */
@@ -28,15 +33,15 @@ class Coordinate implements StringInterface
      */
     public function __construct($latitude, $longitude)
     {
-        if (empty($latitude) || empty($longitude)) {
+        if (!is_numeric($latitude) || !is_numeric($longitude)) {
             throw new MissingCoordinateValueException();
         }
 
-        if (!self::isValidLatitude($latitude)) {
+        if (!$this->isValidLatitude($latitude)) {
             throw new InvalidCoordinateLatitudeValueException($latitude);
         }
 
-        if (!self::isValidLongitude($longitude)) {
+        if (!$this->isValidLongitude($longitude)) {
             throw new InvalidCoordinateLongitudeValueException($longitude);
         }
 
@@ -92,17 +97,17 @@ class Coordinate implements StringInterface
      * @param $latitude
      * @return bool
      */
-    public static function isValidLatitude($latitude)
+    public function isValidLatitude($latitude)
     {
-        return preg_match('/^-?([1-8]?[1-9]|[1-9]0)\.{1}\d/', $latitude) == 1;
+        return $latitude >= self::LATITUDE_MIN_VALUE && $latitude <= self::LATITUDE_MAX_VALUE;
     }
 
     /**
      * @param $longitude
      * @return bool
      */
-    public static function isValidLongitude($longitude)
+    public function isValidLongitude($longitude)
     {
-        return preg_match('/^-?([1]?[0-7][1-9]|[1]?[1-8][0]|[1-9]?[0-9])\.{1}\d/', $longitude) == 1;
+        return $longitude >= self::LONGITUDE_MIN_VALUE && $longitude <= self::LONGITUDE_MAX_VALUE;
     }
 }
