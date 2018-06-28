@@ -36,7 +36,7 @@ class Uuid implements StringInterface
     }
 
     /**
-     * @return string
+     * @return \G4\ValueObject\Uuid
      */
     public static function generate()
     {
