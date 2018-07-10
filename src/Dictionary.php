@@ -167,6 +167,17 @@ class Dictionary
     }
 
     /**
+     * @param Dictionary $data
+     * @return Dictionary
+     */
+    public function merge(Dictionary $data)
+    {
+        return new self(
+            array_merge($this->getAll(), $data->getAll())
+        );
+    }
+
+    /**
      * @param StringInterface|null $delimiter
      * @return string
      */

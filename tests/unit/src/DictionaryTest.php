@@ -315,4 +315,39 @@ class DictionaryTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($dictionary->hasNotNullValue('key1'));
         $this->assertFalse($dictionary->hasNotNullValue('key2'));
     }
+
+    public function testMerge()
+    {
+        $dictionary = new Dictionary([
+            'key1'   => 'value1',
+            'key2'   => 'value2',
+            'nested' => [1,2,3]
+        ]);
+        $additionalDictionary = new Dictionary([
+            'key3' => 'value3'
+        ]);
+        $result = [
+            'key1'   => 'value1',
+            'key2'   => 'value2',
+            'nested' => [1,2,3],
+            'key3'   => 'value3'
+        ];
+        $this->assertEquals($result, $dictionary->merge($additionalDictionary)->getAll());
+    }
+
+    public function testMergeSameValues()
+    {
+        $dictionary = new Dictionary([
+            'key1'   => 'value1',
+            'key2'   => 'value2'
+        ]);
+        $additionalDictionary = new Dictionary([
+            'key2' => null
+        ]);
+        $result = [
+            'key1'   => 'value1',
+            'key2'   => null
+        ];
+        $this->assertEquals($result, $dictionary->merge($additionalDictionary)->getAll());
+    }
 }
