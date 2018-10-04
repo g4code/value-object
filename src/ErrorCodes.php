@@ -26,4 +26,5 @@ class ErrorCodes
     const INVALID_ASSETS_URL_VALUE      = 60020;
     const INVALID_DEVICE_VALUE          = 60021;
     const INVALID_LOCATION_VALUE        = 60022;
+    const INVALID_GENDER_KEY            = 60023;
 }
