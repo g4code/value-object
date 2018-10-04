@@ -3,27 +3,30 @@
 namespace G4\ValueObject;
 
 use G4\ValueObject\Exception\InvalidGenderException;
+use G4\ValueObject\Exception\InvalidGenderKeyException;
 
 class Gender
 {
 
-    const MALE   = 'M';
-    const FEMALE = 'F';
+    const MALE         = 'M';
+    const FEMALE       = 'F';
+    const KEY_MALE     = 1;
+    const KEY_FEMALE   = 2;
 
     private $data;
 
-    private $genderMap = [
-        'M' => [
+    private static $genderMap = [
+        self::MALE => [
             'type'   => 'Male',
             'name'   => 'Man',
             'plural' => 'Men',
-            'key'    => 1
+            'key'    => self::KEY_MALE
         ],
-        'F' => [
+        self::FEMALE => [
             'type'   => 'Female',
             'name'   => 'Woman',
             'plural' => 'Women',
-            'key'    => 2
+            'key'    => self::KEY_FEMALE
         ],
     ];
 
@@ -34,7 +37,7 @@ class Gender
      */
     public function __construct($value)
     {
-        if (!array_key_exists($value, $this->genderMap)) {
+        if (!array_key_exists($value, self::$genderMap)) {
             throw new InvalidGenderException($value);
         }
         $this->data = $value;
@@ -55,17 +58,17 @@ class Gender
 
     public function getGenderName()
     {
-        return $this->genderMap[$this->data]['name'];
+        return self::$genderMap[$this->data]['name'];
     }
 
     public function getGenderPlural()
     {
-        return $this->genderMap[$this->data]['plural'];
+        return self::$genderMap[$this->data]['plural'];
     }
 
     public function getGenderType()
     {
-        return $this->genderMap[$this->data]['type'];
+        return self::$genderMap[$this->data]['type'];
     }
 
     public function getOpposite()
@@ -77,22 +80,22 @@ class Gender
 
     public function getGenderTypeLowercase()
     {
-        return strtolower($this->genderMap[$this->data]['type']);
+        return strtolower(self::$genderMap[$this->data]['type']);
     }
 
     public function getGenderOppositeTypeLowercase()
     {
-        return strtolower($this->genderMap[$this->getOpposite()]['type']);
+        return strtolower(self::$genderMap[$this->getOpposite()]['type']);
     }
 
     public function getGenderKey()
     {
-        return $this->genderMap[$this->data]['key'];
+        return self::$genderMap[$this->data]['key'];
     }
 
     public function getOppositeGenderKey()
     {
-        return $this->genderMap[$this->getOpposite()]['key'];
+        return self::$genderMap[$this->getOpposite()]['key'];
     }
 
     public static function createMale()
@@ -103,6 +106,21 @@ class Gender
     public static function createFemale()
     {
         return new self(self::FEMALE);
+    }
+
+    /**
+     * @param $key
+     * @return Gender
+     * @throws InvalidGenderKeyException
+     */
+    public static function createFromKey($key)
+    {
+        foreach (self::$genderMap as $name => $data) {
+            if ($data['key'] == $key) {
+                return new self($name);
+            }
+        }
+        throw new InvalidGenderKeyException($key);
     }
 
     /**

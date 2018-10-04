@@ -1,6 +1,8 @@
 <?php
 
 use G4\ValueObject\Gender;
+use G4\ValueObject\Exception\InvalidGenderKeyException;
+use G4\ValueObject\Exception\InvalidGenderException;
 
 class GenderTest extends PHPUnit_Framework_TestCase {
 
@@ -105,7 +107,7 @@ class GenderTest extends PHPUnit_Framework_TestCase {
 
     public function testException()
     {
-        $this->expectException(\G4\ValueObject\Exception\InvalidGenderException::class);
+        $this->expectException(InvalidGenderException::class);
         $this->genderFactory('some_unknowN_@gender!');
     }
 
@@ -138,6 +140,24 @@ class GenderTest extends PHPUnit_Framework_TestCase {
         $aFemale = Gender::createFemale();
         $this->assertInstanceOf(Gender::class, Gender::createFemale());
         $this->assertEquals("F", (string)$aFemale);
+    }
+
+    public function testCreateFromKey()
+    {
+        $this->assertEquals('M', (string)Gender::createFromKey(1));
+        $this->assertEquals('M', (string)Gender::createFromKey('1'));
+
+        $this->assertEquals('F', (string)Gender::createFromKey(2));
+        $this->assertEquals('F', (string)Gender::createFromKey('2'));
+    }
+
+    public function testCreateFromKeyException()
+    {
+        $badKey = 0;
+        $this->expectException(InvalidGenderKeyException::class);
+        $this->expectExceptionMessage('Gender key 0 is invalid');
+        $this->expectExceptionCode(60023);
+        Gender::createFromKey($badKey);
     }
 
     private function genderFactory($gender)
