@@ -46,12 +46,13 @@ class BirthdayTest extends PHPUnit_Framework_TestCase {
 
     public function testGetAge()
     {
-        $wasBorn = \DateTime::createFromFormat("Y", 1980);
         $now = new \DateTime();
 
+        $birthday = $this->birthdayFactory(1981, 12, 18);
+
         $this->assertEquals(
-            $now->diff($wasBorn)->y,
-            $this->birthdayFactory($wasBorn->format('Y'), 1, 1)->getAge()
+            $now->diff($birthday->getBirthday())->y,
+            $birthday->getAge()
         );
     }
 
