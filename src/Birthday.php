@@ -61,10 +61,8 @@ class Birthday
      */
     public function getAge()
     {
-        $wasBorn = \DateTime::createFromFormat("Y", $this->year);
         $now = new \DateTime();
-        $interval = $now->diff($wasBorn);
-        return $interval->y;
+        return $now->diff($this->getBirthday())->y;
     }
 
     /**
