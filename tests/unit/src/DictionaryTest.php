@@ -195,6 +195,46 @@ class DictionaryTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(3, $dictionary->count());
     }
 
+    public function testCurrent()
+    {
+        $data = [
+            'key1' => 'value1',
+            'key2' => 'value2',
+            'key3' => 'value3',
+        ];
+
+        $dictionary = new Dictionary($data);
+        $this->assertEquals('value1', $dictionary->current());
+    }
+
+    public function testCurrentEmpty()
+    {
+        $data = [];
+
+        $dictionary = new Dictionary($data);
+        $this->assertEquals(null, $dictionary->current());
+    }
+
+    public function testKey()
+    {
+        $data = [
+            'key1' => 'value1',
+            'key2' => 'value2',
+            'key3' => 'value3',
+        ];
+
+        $dictionary = new Dictionary($data);
+        $this->assertEquals('key1', $dictionary->key());
+    }
+
+    public function testKeyEmpty()
+    {
+        $data = [];
+
+        $dictionary = new Dictionary($data);
+        $this->assertEquals(null, $dictionary->key());
+    }
+
     public function testEquals()
     {
         $data = [

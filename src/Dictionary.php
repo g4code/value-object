@@ -54,6 +54,22 @@ class Dictionary
     }
 
     /**
+     * @return mixed
+     */
+    public function current()
+    {
+        return current($this->data);
+    }
+
+    /**
+     * @return int|null|string
+     */
+    public function key()
+    {
+        return key($this->data);
+    }
+
+    /**
      * @param Dictionary $data
      * @return bool
      */
