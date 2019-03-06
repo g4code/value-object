@@ -8,7 +8,7 @@ class Md5Test extends PHPUnit_Framework_TestCase
 {
     public function testToString()
     {
-        $value = '7e4ef92d1472fa1a2d41b2d3c1d2b77a';
+        $value = '7E4ef92d1472fa1a2d41b2d3c1d2b77a';
 
         $this->assertEquals($value, (string) (new Md5($value)));
     }

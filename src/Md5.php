@@ -25,7 +25,7 @@ class Md5
             throw new MissingMd5ValueException();
         }
 
-        if (!preg_match('/^[a-f0-9]{32}$/', $value)) {
+        if (!preg_match('/^[a-fA-F0-9]{32}$/', $value)) {
             throw new InvalidMd5Exception($value);
         }
         $this->value = $value;
