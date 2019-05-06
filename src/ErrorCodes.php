@@ -27,4 +27,6 @@ class ErrorCodes
     const INVALID_DEVICE_VALUE          = 60021;
     const INVALID_LOCATION_VALUE        = 60022;
     const INVALID_GENDER_KEY            = 60023;
+    const INVALID_PROBABILITY           = 60024;
+    const INVALID_PROBABILITY_OUTCOME   = 60025;
 }
