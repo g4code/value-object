@@ -48,4 +48,12 @@ class IntegerNumber implements NumberInterface
     {
         return $this->value;
     }
+
+    /**
+     * @return bool
+     */
+    public function isZeroValue()
+    {
+        return $this->value === 0;
+    }
 }
