@@ -67,4 +67,9 @@ class IntegerNumberTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($integerNumber->equals(new IntegerNumber(12)));
         $this->assertFalse($integerNumber->equals(new IntegerNumber(10)));
     }
+
+    public function testIsZeroValue()
+    {
+        $this->assertTrue((new IntegerNumber(0))->isZeroValue());
+    }
 }
