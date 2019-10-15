@@ -90,6 +90,15 @@ class Url implements StringInterface
     }
 
     /**
+     * @return array
+     */
+    public function getQueryParams()
+    {
+        parse_str($this->query, $params);
+        return $params;
+    }
+
+    /**
      * @return string
      */
     private function buildUrl()
