@@ -35,7 +35,7 @@ class BirthdayTest extends PHPUnit_Framework_TestCase {
     public function testExceptionInFuture()
     {
         $this->expectException(\G4\ValueObject\Exception\InvalidBirthdayException::class);
-        $this->birthdayFactory('2020','30','2')->getBirthday();
+        $this->birthdayFactory('2030','30','2')->getBirthday();
     }
 
     public function testExceptionElfs()
