@@ -61,7 +61,7 @@ class DomainName implements StringInterface
      */
     public function getFirstLevelDomainName()
     {
-        preg_match('/(^|\.)((?!\.)[a-zA-Z\d\-]{1,63}\.(?!\d+)[a-zA-Z\d]{1,63})$/uxis', $this->__toString(), $matches);
+        preg_match('/(^|\.)((?!\.)[a-zA-Zå\d\-]{1,63}\.(?!\d+)[a-zA-Zå\d]{1,63})$/uxis', $this->__toString(), $matches);
 
         return new self($matches[2]);
     }
@@ -71,7 +71,7 @@ class DomainName implements StringInterface
      */
     public function getTopLevelDomainName()
     {
-        preg_match('/\.((?!\d+)[a-zA-Z\d]{1,63})$/xuis', $this->__toString(), $matches);
+        preg_match('/\.((?!\d+)[a-zA-Zå\d]{1,63})$/xuis', $this->__toString(), $matches);
 
         return new StringLiteral($matches[1]);
     }
@@ -115,7 +115,7 @@ class DomainName implements StringInterface
     {
         return \is_string($value)
             && preg_match(
-                '/^(?!\-)(?:[a-zA-Z\d\-]{0,62}[a-zA-Z\d]\.){1,126}(?!\d+)[a-zA-Z\d]{1,63}$/uxis',
+                '/^(?!\-)(?:[a-zA-Zå\d\-]{0,62}[a-zA-Zå\d]\.){1,126}(?!\d+)[a-zA-Zå\d]{1,63}$/uxis',
                 $value
             ) === 1;
     }
