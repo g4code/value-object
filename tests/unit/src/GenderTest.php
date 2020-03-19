@@ -4,9 +4,8 @@ use G4\ValueObject\Gender;
 use G4\ValueObject\Exception\InvalidGenderKeyException;
 use G4\ValueObject\Exception\InvalidGenderException;
 
-class GenderTest extends PHPUnit_Framework_TestCase {
-
-
+class GenderTest extends PHPUnit_Framework_TestCase
+{
     //MALE
 
     public function testGetGenderNameMale()
@@ -21,7 +20,7 @@ class GenderTest extends PHPUnit_Framework_TestCase {
 
     public function testGetOppositeOfMale()
     {
-        $this->assertEquals("F", $this->genderFactory("M")->getOpposite());
+        $this->assertEquals(['F', 'C'], $this->genderFactory("M")->getOpposite());
     }
 
     public function testGetGenderTypeMale()
@@ -34,19 +33,9 @@ class GenderTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals("male", $this->genderFactory("M")->getGenderTypeLowercase());
     }
 
-    public function testGetGenderOppositeTypeLowercaseMale()
-    {
-        $this->assertEquals("female", $this->genderFactory("M")->getGenderOppositeTypeLowercase());
-    }
-
     public function testGetGenderKeyMale()
     {
         $this->assertEquals("1", $this->genderFactory("M")->getGenderKey());
-    }
-
-    public function testGetOppositeGenderKeyMale()
-    {
-        $this->assertEquals("2", $this->genderFactory("M")->getOppositeGenderKey());
     }
 
     public function testToStringMale()
@@ -75,7 +64,7 @@ class GenderTest extends PHPUnit_Framework_TestCase {
 
     public function testGetOppositeOfFemale()
     {
-        $this->assertEquals("M", $this->genderFactory("F")->getOpposite());
+        $this->assertEquals(["M"], $this->genderFactory("F")->getOpposite());
     }
 
     public function testGetGenderTypeLowercaseFemale()
@@ -83,24 +72,51 @@ class GenderTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals("female", $this->genderFactory("F")->getGenderTypeLowercase());
     }
 
-    public function testGetGenderOppositeTypeLowercaseFemale()
-    {
-        $this->assertEquals("male", $this->genderFactory("F")->getGenderOppositeTypeLowercase());
-    }
-
     public function testGetGenderKeyFemale()
     {
         $this->assertEquals("2", $this->genderFactory("F")->getGenderKey());
     }
 
-    public function testGetOppositeGenderKeyFemale()
-    {
-        $this->assertEquals("1", $this->genderFactory("F")->getOppositeGenderKey());
-    }
-
     public function testToStringFemale()
     {
         $this->assertEquals("F", (string)$this->genderFactory("F"));
+    }
+
+    //COUPLE
+
+    public function testGetGenderNameCouple()
+    {
+        $this->assertEquals("Couple", $this->genderFactory("C")->getGenderName());
+    }
+
+    public function testGetGenderPluralCouple()
+    {
+        $this->assertEquals("Couples", $this->genderFactory("C")->getGenderPlural());
+    }
+
+    public function testGetGenderTypeCouple()
+    {
+        $this->assertEquals("Couple", $this->genderFactory("C")->getGenderType());
+    }
+
+    public function testGetOppositeOfCouple()
+    {
+        $this->assertEquals(["M"], $this->genderFactory("C")->getOpposite());
+    }
+
+    public function testGetGenderTypeLowercaseCouple()
+    {
+        $this->assertEquals("couple", $this->genderFactory("C")->getGenderTypeLowercase());
+    }
+
+    public function testGetGenderKeyCouple()
+    {
+        $this->assertEquals("3", $this->genderFactory("C")->getGenderKey());
+    }
+
+    public function testToStringCouple()
+    {
+        $this->assertEquals("C", (string)$this->genderFactory("C"));
     }
 
     //exceptions
@@ -111,20 +127,13 @@ class GenderTest extends PHPUnit_Framework_TestCase {
         $this->genderFactory('some_unknowN_@gender!');
     }
 
-    public function testOpositeMaleToFemale()
+    public function testCreateFromKeyException()
     {
-        $aMale      = Gender::createMale();
-        $aFemale    = $aMale->createOpposite();
-        $this->assertInstanceOf(Gender::class, $aFemale);
-        $this->assertEquals('F', (string) $aFemale);
-    }
-
-    public function testOpositeFemaleToMale()
-    {
-        $aFemale    = Gender::createFemale();
-        $aMale      = $aFemale->createOpposite();
-        $this->assertInstanceOf(Gender::class, $aMale);
-        $this->assertEquals('M', (string) $aMale);
+        $badKey = 0;
+        $this->expectException(InvalidGenderKeyException::class);
+        $this->expectExceptionMessage('Gender key 0 is invalid');
+        $this->expectExceptionCode(60023);
+        Gender::createFromKey($badKey);
     }
 
     //static methods
@@ -142,6 +151,13 @@ class GenderTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals("F", (string)$aFemale);
     }
 
+    public function testCreateCouple()
+    {
+        $aCouple = Gender::createCouple();
+        $this->assertInstanceOf(Gender::class, Gender::createCouple());
+        $this->assertEquals("C", (string) $aCouple);
+    }
+
     public function testCreateFromKey()
     {
         $this->assertEquals('M', (string)Gender::createFromKey(1));
@@ -149,15 +165,81 @@ class GenderTest extends PHPUnit_Framework_TestCase {
 
         $this->assertEquals('F', (string)Gender::createFromKey(2));
         $this->assertEquals('F', (string)Gender::createFromKey('2'));
+
+        $this->assertEquals('C', (string)Gender::createFromKey(3));
+        $this->assertEquals('C', (string)Gender::createFromKey('3'));
     }
 
-    public function testCreateFromKeyException()
+    /**
+     * @dataProvider genderOppositeDataProvider
+     *
+     * @param $value
+     * @param array $opposites
+     */
+    public function testGetOpposite($value, array $opposites)
     {
-        $badKey = 0;
-        $this->expectException(InvalidGenderKeyException::class);
-        $this->expectExceptionMessage('Gender key 0 is invalid');
-        $this->expectExceptionCode(60023);
-        Gender::createFromKey($badKey);
+        $gender = new Gender($value);
+
+        $result = $gender->getOpposite();
+
+        $this->assertEquals($result, $opposites);
+    }
+
+    public function genderOppositeDataProvider()
+    {
+        return [
+            ['F', ['M']],
+            ['C', ['M']],
+            ['M', ['F', 'C']],
+        ];
+    }
+
+    /**
+     * @dataProvider genderOppositeTypesLowercaseDataProvider
+     *
+     * @param $value
+     * @param array $oppositeTypesLowercase
+     */
+    public function testGetGenderOppositeTypesLowercase($value, array $oppositeTypesLowercase)
+    {
+        $gender = new Gender($value);
+
+        $result = $gender->getGenderOppositeTypesLowercase();
+
+        $this->assertEquals($result, $oppositeTypesLowercase);
+    }
+
+    public function genderOppositeTypesLowercaseDataProvider()
+    {
+        return [
+            ['F', ['male']],
+            ['C', ['male']],
+            ['M', ['female', 'couple']],
+        ];
+    }
+
+    /**
+     * @dataProvider genderOppositeKeysDataProvider
+     *
+     * @param $value
+     * @param array $oppositeKeys
+     */
+    public function testGetGenderOppositeKeys($value, array $oppositeKeys)
+    {
+        $gender = new Gender($value);
+
+        $result = $gender->getOppositeGenderKeys();
+
+        $this->assertEquals($result, $oppositeKeys);
+    }
+
+    public function genderOppositeKeysDataProvider()
+    {
+        return [
+            ['F', [1]],
+            ['C', [1]],
+            ['M', [2, 3]],
+        ];
     }
 
     private function genderFactory($gender)

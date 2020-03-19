@@ -4,14 +4,16 @@ namespace G4\ValueObject;
 
 use G4\ValueObject\Exception\InvalidGenderException;
 use G4\ValueObject\Exception\InvalidGenderKeyException;
+use G4\ValueObject\Exception\MissingGenderOppositeException;
 
 class Gender
 {
-
     const MALE         = 'M';
     const FEMALE       = 'F';
+    const COUPLE       = 'C';
     const KEY_MALE     = 1;
     const KEY_FEMALE   = 2;
+    const KEY_COUPLE   = 3;
 
     private $data;
 
@@ -28,10 +30,17 @@ class Gender
             'plural' => 'Women',
             'key'    => self::KEY_FEMALE
         ],
+        self::COUPLE => [
+            'type'   => 'Couple',
+            'name'   => 'Couple',
+            'plural' => 'Couples',
+            'key'    => self::KEY_COUPLE
+        ],
     ];
 
     /**
      * Gender constructor.
+     *
      * @param $value
      * @throws InvalidGenderException
      */
@@ -43,6 +52,9 @@ class Gender
         $this->data = $value;
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return (string)$this->data;
@@ -56,56 +68,117 @@ class Gender
         return $this->data;
     }
 
+    /**
+     * @return string
+     */
     public function getGenderName()
     {
         return self::$genderMap[$this->data]['name'];
     }
 
+    /**
+     * @return string
+     */
     public function getGenderPlural()
     {
         return self::$genderMap[$this->data]['plural'];
     }
 
+    /**
+     * @return integer
+     */
     public function getGenderType()
     {
         return self::$genderMap[$this->data]['type'];
     }
 
+    /**
+     * @return array
+     * @throws MissingGenderOppositeException
+     */
     public function getOpposite()
     {
-        return $this->data === 'M'
-            ? 'F'
-            : 'M' ;
+        if ($this->data === self::FEMALE) {
+            return [self::MALE];
+        }
+
+        if ($this->data === self::COUPLE) {
+            return [self::MALE];
+        }
+
+        if ($this->data === self::MALE) {
+            return [self::FEMALE, self::COUPLE];
+        }
+
+        throw new MissingGenderOppositeException($this->data);
     }
 
+    /**
+     * @return array
+     */
+    public function getGenderOppositeTypesLowercase()
+    {
+        $types = [];
+
+        foreach ($this->getOpposite() as $opposite) {
+            $types[] = strtolower(self::$genderMap[$opposite]['type']);
+        }
+
+        return $types;
+    }
+
+    /**
+     * @return array
+     */
+    public function getOppositeGenderKeys()
+    {
+        $keys = [];
+
+        foreach ($this->getOpposite() as $opposite) {
+            $keys[] = strtolower(self::$genderMap[$opposite]['key']);
+        }
+
+        return $keys;
+    }
+
+    /**
+     * @return string
+     */
     public function getGenderTypeLowercase()
     {
         return strtolower(self::$genderMap[$this->data]['type']);
     }
 
-    public function getGenderOppositeTypeLowercase()
-    {
-        return strtolower(self::$genderMap[$this->getOpposite()]['type']);
-    }
-
+    /**
+     * @return integer
+     */
     public function getGenderKey()
     {
         return self::$genderMap[$this->data]['key'];
     }
 
-    public function getOppositeGenderKey()
-    {
-        return self::$genderMap[$this->getOpposite()]['key'];
-    }
-
+    /**
+     * @return Gender
+     */
     public static function createMale()
     {
         return new self(self::MALE);
     }
 
+    /**
+     * @return Gender
+     */
     public static function createFemale()
     {
         return new self(self::FEMALE);
+    }
+
+    /**
+     * @return Gender
+     */
+    public static function createCouple()
+    {
+        return new self(self::COUPLE);
     }
 
     /**
@@ -120,14 +193,7 @@ class Gender
                 return new self($name);
             }
         }
-        throw new InvalidGenderKeyException($key);
-    }
 
-    /**
-     * @return Gender
-     */
-    public function createOpposite()
-    {
-        return new self($this->getOpposite());
+        throw new InvalidGenderKeyException($key);
     }
 }
