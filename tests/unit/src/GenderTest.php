@@ -44,7 +44,6 @@ class GenderTest extends PHPUnit_Framework_TestCase
         $this->assertEquals("M", $this->genderFactory("M")->getGender());
     }
 
-
     //FEMALE
 
     public function testGetGenderNameFemale()
@@ -119,7 +118,44 @@ class GenderTest extends PHPUnit_Framework_TestCase
         $this->assertEquals("C", (string)$this->genderFactory("C"));
     }
 
-    //exceptions
+    // NON-BINARY
+
+    public function testGetGenderNameNonBinary()
+    {
+        $this->assertEquals("Non-Binary", $this->genderFactory("N")->getGenderName());
+    }
+
+    public function testGetGenderPluralNonBinary()
+    {
+        $this->assertEquals("Non-Binaries", $this->genderFactory("N")->getGenderPlural());
+    }
+
+    public function testGetGenderTypeNonBinary()
+    {
+        $this->assertEquals("Non-Binary", $this->genderFactory("N")->getGenderType());
+    }
+
+    public function testGetOppositeOfNonBinary()
+    {
+        $this->assertEquals(["F", "N"], $this->genderFactory("N")->getOpposite());
+    }
+
+    public function testGetGenderTypeLowercaseNonBinary()
+    {
+        $this->assertEquals("non-binary", $this->genderFactory("N")->getGenderTypeLowercase());
+    }
+
+    public function testGetGenderKeyNonBinary()
+    {
+        $this->assertEquals("4", $this->genderFactory("N")->getGenderKey());
+    }
+
+    public function testToStringNonBinary()
+    {
+        $this->assertEquals("N", (string)$this->genderFactory("N"));
+    }
+
+    // EXCEPTIONS
 
     public function testException()
     {
@@ -136,26 +172,33 @@ class GenderTest extends PHPUnit_Framework_TestCase
         Gender::createFromKey($badKey);
     }
 
-    //static methods
+    // STATIC METHODS
     public function testCreateMale()
     {
         $aMale = Gender::createMale();
-        $this->assertInstanceOf(Gender::class, Gender::createMale());
+        $this->assertInstanceOf(Gender::class, $aMale);
         $this->assertEquals("M", (string)$aMale);
     }
 
     public function testCreateFemale()
     {
         $aFemale = Gender::createFemale();
-        $this->assertInstanceOf(Gender::class, Gender::createFemale());
+        $this->assertInstanceOf(Gender::class, $aFemale);
         $this->assertEquals("F", (string)$aFemale);
     }
 
     public function testCreateCouple()
     {
         $aCouple = Gender::createCouple();
-        $this->assertInstanceOf(Gender::class, Gender::createCouple());
+        $this->assertInstanceOf(Gender::class, $aCouple);
         $this->assertEquals("C", (string) $aCouple);
+    }
+
+    public function testCreateNonBinary()
+    {
+        $aNonBinary = Gender::createNonBinary();
+        $this->assertInstanceOf(Gender::class, $aNonBinary);
+        $this->assertEquals("N", (string) $aNonBinary);
     }
 
     public function testCreateFromKey()
@@ -168,6 +211,9 @@ class GenderTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals('C', (string)Gender::createFromKey(3));
         $this->assertEquals('C', (string)Gender::createFromKey('3'));
+
+        $this->assertEquals('N', (string)Gender::createFromKey(4));
+        $this->assertEquals('N', (string)Gender::createFromKey('4'));
     }
 
     /**
@@ -191,6 +237,7 @@ class GenderTest extends PHPUnit_Framework_TestCase
             ['F', ['M']],
             ['C', ['M']],
             ['M', ['F', 'C']],
+            ['N', ['F', 'N']],
         ];
     }
 
@@ -215,6 +262,7 @@ class GenderTest extends PHPUnit_Framework_TestCase
             ['F', ['male']],
             ['C', ['male']],
             ['M', ['female', 'couple']],
+            ['N', ['female', 'non-binary']],
         ];
     }
 
@@ -239,6 +287,7 @@ class GenderTest extends PHPUnit_Framework_TestCase
             ['F', [1]],
             ['C', [1]],
             ['M', [2, 3]],
+            ['N', [2, 4]],
         ];
     }
 

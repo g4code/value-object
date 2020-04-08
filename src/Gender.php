@@ -8,12 +8,14 @@ use G4\ValueObject\Exception\MissingGenderOppositeException;
 
 class Gender
 {
-    const MALE         = 'M';
-    const FEMALE       = 'F';
-    const COUPLE       = 'C';
-    const KEY_MALE     = 1;
-    const KEY_FEMALE   = 2;
-    const KEY_COUPLE   = 3;
+    const MALE             = 'M';
+    const FEMALE           = 'F';
+    const COUPLE           = 'C';
+    const NON_BINARY       = 'N';
+    const KEY_MALE         = 1;
+    const KEY_FEMALE       = 2;
+    const KEY_COUPLE       = 3;
+    const KEY_NON_BINARY   = 4;
 
     private $data;
 
@@ -35,6 +37,12 @@ class Gender
             'name'   => 'Couple',
             'plural' => 'Couples',
             'key'    => self::KEY_COUPLE
+        ],
+        self::NON_BINARY => [
+            'type'   => 'Non-Binary',
+            'name'   => 'Non-Binary',
+            'plural' => 'Non-Binaries',
+            'key'    => self::KEY_NON_BINARY
         ],
     ];
 
@@ -110,6 +118,10 @@ class Gender
             return [self::FEMALE, self::COUPLE];
         }
 
+        if ($this->data === self::NON_BINARY) {
+            return [self::FEMALE, self::NON_BINARY];
+        }
+
         throw new MissingGenderOppositeException($this->data);
     }
 
@@ -179,6 +191,14 @@ class Gender
     public static function createCouple()
     {
         return new self(self::COUPLE);
+    }
+
+    /**
+     * @return Gender
+     */
+    public static function createNonBinary()
+    {
+        return new self(self::NON_BINARY);
     }
 
     /**
