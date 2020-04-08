@@ -29,5 +29,4 @@ class ErrorCodes
     const INVALID_GENDER_KEY            = 60023;
     const INVALID_PROBABILITY           = 60024;
     const INVALID_PROBABILITY_OUTCOME   = 60025;
-    const MISSING_GENDER_OPPOSITE       = 60026;
 }
