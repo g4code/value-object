@@ -6,6 +6,8 @@
 *.pid
 *.gz
 
+!external/mozilla/public_suffix_list.dat
+
 composer.phar
 composer.lock
 vendor
