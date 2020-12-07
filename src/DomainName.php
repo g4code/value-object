@@ -112,7 +112,7 @@ class DomainName implements StringInterface
      * @param $value
      * @return bool
      */
-    private function isValid($value)
+    protected function isValid($value)
     {
         return \is_string($value)
             && preg_match(
