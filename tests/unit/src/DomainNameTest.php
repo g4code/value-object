@@ -92,6 +92,24 @@ class DomainNameTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals('foo-bar-baz.com', (string) (new DomainName('a1.www.foo-bar-baz.com'))->getFirstLevelDomainName());
         $this->assertEquals('foo-bar-baz.com', (string) (new DomainName('foo-bar-baz.com'))->getFirstLevelDomainName());
+
+        $this->assertEquals('bla-bla.org', (string) (new DomainName('d1.www.bla-bla.org'))->getFirstLevelDomainName());
+        $this->assertEquals('bla-bla.org', (string) (new DomainName('bla-bla.org'))->getFirstLevelDomainName());
+
+        $this->assertEquals('domain.co.uk', (string) (new DomainName('a1.www.domain.co.uk'))->getFirstLevelDomainName());
+        $this->assertEquals('domain.co.uk', (string) (new DomainName('domain.co.uk'))->getFirstLevelDomainName());
+
+        $this->assertEquals('domain.de', (string) (new DomainName('a1.www.domain.de'))->getFirstLevelDomainName());
+        $this->assertEquals('domain.de', (string) (new DomainName('domain.de'))->getFirstLevelDomainName());
+
+        $this->assertEquals('domain.com.au', (string) (new DomainName('a1.b1.www.domain.com.au'))->getFirstLevelDomainName());
+        $this->assertEquals('domain.com.au', (string) (new DomainName('domain.com.au'))->getFirstLevelDomainName());
+
+        $this->assertEquals('domain.online', (string) (new DomainName('subdomain.domain.online'))->getFirstLevelDomainName());
+        $this->assertEquals('domain.online', (string) (new DomainName('domain.online'))->getFirstLevelDomainName());
+
+        $this->assertEquals('domain.fi', (string) (new DomainName('subdomain.domain.fi'))->getFirstLevelDomainName());
+        $this->assertEquals('domain.fi', (string) (new DomainName('domain.fi'))->getFirstLevelDomainName());
     }
 
     public function testDiff()
