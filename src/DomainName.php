@@ -61,9 +61,10 @@ class DomainName implements StringInterface
      */
     public function getFirstLevelDomainName()
     {
-        preg_match('/(^|\.)((?!\.)[a-zA-Zå\d\-]{1,63}\.(?!\d+)[a-zA-Zå\d]{1,63})$/uxis', $this->__toString(), $matches);
-
-        return new self($matches[2]);
+        // todo after updating library jeremykendall/php-domain-parser to v6 implement caching
+        $rules = \Pdp\Rules::createFromPath(__DIR__. '/../external/mozilla/public_suffix_list.dat');
+        $domain = $rules->resolve($this->__toString())->getRegistrableDomain();
+        return new self($domain);
     }
 
     /**
