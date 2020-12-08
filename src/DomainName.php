@@ -61,6 +61,14 @@ class DomainName implements StringInterface
      */
     public function getFirstLevelDomainName()
     {
+        // todo after migrating to php7 remove this php5.6 compatibility class
+        if (class_exists(\Pdp\Parser::class)) {
+            $manager = new \Pdp\PublicSuffixListManager();
+            $parser = new \Pdp\Parser($manager->getList());
+            $domain = $parser->getRegisterableDomain($this->__toString());
+            return new self($domain);
+        }
+
         // todo after updating library jeremykendall/php-domain-parser to v6 implement caching
         $rules = \Pdp\Rules::createFromPath(__DIR__. '/../external/mozilla/public_suffix_list.dat');
         $domain = $rules->resolve($this->__toString())->getRegistrableDomain();
