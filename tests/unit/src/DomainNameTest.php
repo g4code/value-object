@@ -102,14 +102,26 @@ class DomainNameTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('domain.de', (string) (new DomainName('a1.www.domain.de'))->getFirstLevelDomainName());
         $this->assertEquals('domain.de', (string) (new DomainName('domain.de'))->getFirstLevelDomainName());
 
-        $this->assertEquals('domain.com.au', (string) (new DomainName('a1.b1.www.domain.com.au'))->getFirstLevelDomainName());
-        $this->assertEquals('domain.com.au', (string) (new DomainName('domain.com.au'))->getFirstLevelDomainName());
-
         $this->assertEquals('domain.online', (string) (new DomainName('subdomain.domain.online'))->getFirstLevelDomainName());
         $this->assertEquals('domain.online', (string) (new DomainName('domain.online'))->getFirstLevelDomainName());
 
         $this->assertEquals('domain.fi', (string) (new DomainName('subdomain.domain.fi'))->getFirstLevelDomainName());
         $this->assertEquals('domain.fi', (string) (new DomainName('domain.fi'))->getFirstLevelDomainName());
+
+        $this->assertEquals('domain.it', (string) (new DomainName('subdomain.domain.it'))->getFirstLevelDomainName());
+        $this->assertEquals('domain.it', (string) (new DomainName('domain.it'))->getFirstLevelDomainName());
+
+        $this->assertEquals('domain.fr', (string) (new DomainName('subdomain.domain.fr'))->getFirstLevelDomainName());
+        $this->assertEquals('domain.fr', (string) (new DomainName('domain.fr'))->getFirstLevelDomainName());
+
+        $this->assertEquals('domain.se', (string) (new DomainName('subdomain.domain.se'))->getFirstLevelDomainName());
+        $this->assertEquals('domain.se', (string) (new DomainName('domain.se'))->getFirstLevelDomainName());
+
+        $this->assertEquals('domain.dk', (string) (new DomainName('subdomain.domain.dk'))->getFirstLevelDomainName());
+        $this->assertEquals('domain.dk', (string) (new DomainName('domain.dk'))->getFirstLevelDomainName());
+
+        $this->assertEquals('domain.co.uk', (string) (new DomainName('subdomain.domain.co.uk'))->getFirstLevelDomainName());
+        $this->assertEquals('domain.co.uk', (string) (new DomainName('domain.co.uk'))->getFirstLevelDomainName());
     }
 
     public function testDiff()
