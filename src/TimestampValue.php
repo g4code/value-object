@@ -61,7 +61,7 @@ class TimestampValue implements StringInterface, NumberInterface
      */
     public function getMilliseconds()
     {
-        return (int) $this->value * 1000;
+        return (int) ($this->value * 1000);
     }
 
     /**
