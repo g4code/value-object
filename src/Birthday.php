@@ -40,7 +40,7 @@ class Birthday
      */
     public function getBirthday()
     {
-        return (new \DateTime())->setDate($this->year, $this->month, $this->day);
+        return (new \DateTime())->setDate($this->year, $this->month, $this->day)->setTime(0,0);
     }
 
     /**
