@@ -116,7 +116,7 @@ class DomainName implements StringInterface
     {
         return \is_string($value)
             && preg_match(
-                '/^(?!\-)(?:[a-zA-Zå\d\-]{0,62}[a-zA-Zå\d]\.){1,126}(?!\d+)[a-zA-Zå\d]{1,63}$/uxis',
+                '/^(?!\-)(?:[a-zA-zÀ-ÖØ-öø-ÿ\d\-]{0,62}[a-zA-zÀ-ÖØ-öø-ÿ\d]\.){1,126}(?!\d+)[a-zA-zÀ-ÖØ-öø-ÿ\d]{1,63}$/uxis',
                 $value
             ) === 1;
     }
