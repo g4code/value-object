@@ -244,7 +244,7 @@ class Country
         'UZ' => 'Uzbekistan',
         'VU' => 'Vanuatu',
         'VE' => 'Venezuela',
-        'VN' => 'Viet Nam',
+        'VN' => 'Vietnam',
         'VG' => 'Virgin Islands, British',
         'VI' => 'Virgin Islands, U.S.',
         'WF' => 'Wallis And Futuna',

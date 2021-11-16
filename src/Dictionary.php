@@ -113,7 +113,7 @@ class Dictionary
      */
     public function has($key)
     {
-        return array_key_exists($key, $this->data);
+        return is_array($this->data) && array_key_exists($key, $this->data);
     }
 
     /**
@@ -210,7 +210,7 @@ class Dictionary
      */
     private function removeKey($key)
     {
-        if (array_key_exists($key, $this->data)) {
+        if (is_array($this->data) && array_key_exists($key, $this->data)) {
             unset($this->data[$key]);
         }
     }

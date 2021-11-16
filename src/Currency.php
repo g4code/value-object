@@ -33,6 +33,10 @@ class Currency
             'title' => 'Swedish krona',
             'symbol' => 'kr'
         ],
+        'GBP' => [
+            'title' => 'British Pound',
+            'symbol' => '£'
+        ],
     ];
 
     public function __construct($value)

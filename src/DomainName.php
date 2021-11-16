@@ -61,9 +61,10 @@ class DomainName implements StringInterface
      */
     public function getFirstLevelDomainName()
     {
-        preg_match('/(^|\.)((?!\.)[a-zA-Z\d\-]{1,63}\.(?!\d+)[a-zA-Z\d]{1,63})$/uxis', $this->__toString(), $matches);
+        // todo after migrating to php7 introduce jeremykendall/php-domain-parser
+        $domain = preg_replace('#^(?:.+?\\.)+(.+?\\.(?:at|au|ca|ch|chat|co|com|de|dk|es|fr|fi|it|net|no|org|online|pt|rs|se|co\\.uk))#', '$1', $this->__toString());
 
-        return new self($matches[2]);
+        return new self($domain);
     }
 
     /**
@@ -71,7 +72,7 @@ class DomainName implements StringInterface
      */
     public function getTopLevelDomainName()
     {
-        preg_match('/\.((?!\d+)[a-zA-Z\d]{1,63})$/xuis', $this->__toString(), $matches);
+        preg_match('/\.((?!\d+)[a-zA-Zå\d]{1,63})$/xuis', $this->__toString(), $matches);
 
         return new StringLiteral($matches[1]);
     }
@@ -111,11 +112,11 @@ class DomainName implements StringInterface
      * @param $value
      * @return bool
      */
-    private function isValid($value)
+    protected function isValid($value)
     {
         return \is_string($value)
             && preg_match(
-                '/^(?!\-)(?:[a-zA-Z\d\-]{0,62}[a-zA-Z\d]\.){1,126}(?!\d+)[a-zA-Z\d]{1,63}$/uxis',
+                '/^(?!\-)(?:[a-zA-zÀ-ÖØ-öø-ÿ\d\-]{0,62}[a-zA-zÀ-ÖØ-öø-ÿ\d]\.){1,126}(?!\d+)[a-zA-zÀ-ÖØ-öø-ÿ\d]{1,63}$/uxis',
                 $value
             ) === 1;
     }

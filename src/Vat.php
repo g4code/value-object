@@ -19,6 +19,8 @@ class Vat
         'IT' => 22,
         'NO' => 25,
         'SE' => 25,
+        'GB' => 20,
+        'US' => 0
     ];
 
     public function __construct(CountryCode $countryCode)
