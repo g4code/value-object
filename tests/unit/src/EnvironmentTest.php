@@ -20,6 +20,7 @@ class EnvironmentTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('dev', new Environment('dev'));
         $this->assertEquals('local', new Environment('local'));
         $this->assertEquals('vagrant', new Environment('vagrant'));
+        $this->assertEquals('docker', new Environment('docker'));
     }
 
     public function testIsMethods()
@@ -30,5 +31,6 @@ class EnvironmentTest extends PHPUnit_Framework_TestCase
         $this->assertTrue((new Environment('local'))->isLocal());
         $this->assertTrue((new Environment('vagrant'))->isLocal());
         $this->assertTrue((new Environment('beta'))->isBeta());
+        $this->assertTrue((new Environment('docker'))->isDocker());
     }
 }

@@ -12,6 +12,7 @@ class Environment implements StringInterface
     const DEV           = 'dev';
     const LOCAL         = 'local';
     const VAGRANT       = 'vagrant';
+    const DOCKER        = 'docker';
 
     /**
      * @var string
@@ -62,6 +63,11 @@ class Environment implements StringInterface
             || $this->value === self::VAGRANT;
     }
 
+    public function isDocker()
+    {
+        return $this->value === self::DOCKER;
+    }
+
     private function isValid($value)
     {
         return in_array($value, [
@@ -71,6 +77,7 @@ class Environment implements StringInterface
             self::DEV,
             self::LOCAL,
             self::VAGRANT,
+            self::DOCKER,
         ]);
     }
 }
