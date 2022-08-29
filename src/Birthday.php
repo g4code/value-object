@@ -48,7 +48,7 @@ class Birthday
      */
     public static function get18()
     {
-        $aDate = (new \DateTime(date('Y-m-d', strtotime('18 years ago'))));
+        $aDate = (new \DateTime(date('Y-m-d', strtotime('18 years 6 hours ago '))));
         return new self(
             $aDate->format('Y'),
             $aDate->format('m'),
