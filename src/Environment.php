@@ -60,7 +60,8 @@ class Environment implements StringInterface
     public function isLocal()
     {
         return $this->value === self::LOCAL
-            || $this->value === self::VAGRANT;
+            || $this->value === self::VAGRANT
+            || $this->value === self::DOCKER;
     }
 
     public function isDocker()
