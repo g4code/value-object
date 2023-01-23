@@ -16,12 +16,8 @@ class LanguageCode
     const DE_AT       = 'de_AT';
     const DE_CH       = 'de_CH';
     const DE_DE       = 'de_DE';
-    const EN_AE       = 'en_AE';
     const EN_EN       = 'en_EN';
     const EN_GB       = 'en_GB';
-    const EN_IS       = 'en_IS';
-    const EN_MV       = 'en_MV';
-    const EN_TT       = 'en_TT';
     const EN_US       = 'en_US';
     const ES_CL       = 'es_CL';
     const ES_ES       = 'es_ES';
@@ -52,12 +48,8 @@ class LanguageCode
         self::DE_AT,
         self::DE_CH,
         self::DE_DE,
-        self::EN_AE,
         self::EN_EN,
         self::EN_GB,
-        self::EN_IS,
-        self::EN_MV,
-        self::EN_TT,
         self::EN_US,
         self::ES_CL,
         self::ES_ES,
