@@ -19,21 +19,16 @@ class LanguageCode
     const EN_EN       = 'en_EN';
     const EN_GB       = 'en_GB';
     const EN_US       = 'en_US';
-    const ES_CL       = 'es_CL';
     const ES_ES       = 'es_ES';
     const FI_FI       = 'fi_FI';
-    const FR_BE       = 'fr_BE';
     const FR_CH       = 'fr_CH';
     const FR_FR       = 'fr_FR';
-    const FR_LU       = 'fr_LU';
-    const FR_SN       = 'fr_SN';
     const IT_CH       = 'it_CH';
     const IT_IT       = 'it_IT';
     const KO_KR       = 'ko_KR';
     const NB_NO       = 'nb_NO';
     const NL_NL       = 'nl_NL';
-    const PT_AO       = 'pt_AO';
-    const RO_MD       = 'ro_MD';
+    const PT_PT       = 'pt_PT';
     const RO_RO       = 'ro_RO';
     const RU_RU       = 'ru_RU';
     const SL_SI       = 'sl_SI';
@@ -51,21 +46,16 @@ class LanguageCode
         self::EN_EN,
         self::EN_GB,
         self::EN_US,
-        self::ES_CL,
         self::ES_ES,
         self::FI_FI,
-        self::FR_BE,
         self::FR_CH,
         self::FR_FR,
-        self::FR_LU,
-        self::FR_SN,
         self::IT_CH,
         self::IT_IT,
         self::KO_KR,
         self::NB_NO,
         self::NL_NL,
-        self::PT_AO,
-        self::RO_MD,
+        self::PT_PT,
         self::RO_RO,
         self::RU_RU,
         self::SL_SI,
