@@ -15,7 +15,7 @@ class RealPath
 
     /**
      * RealPath constructor.
-     * @param array ...$parts
+     * @param string ...$parts
      * @throws PathDoesNotExist
      */
     public function __construct(...$parts)
