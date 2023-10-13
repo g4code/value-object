@@ -88,4 +88,25 @@ class UrlTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals('http://subdomain.domain.com:8081/new_path1/new_path2?new_query1=test1&new_query2=test2&new_query3=test3', (string) $url);
     }
+
+    public function testUsernamePassword()
+    {
+        $url = new Url('http://user:pass@example.com:2222/path/to?query=123');
+        $this->assertEquals('http://user:pass@example.com:2222/path/to?query=123', (string) $url);
+    }
+
+    public function testUrlAddCredentials()
+    {
+        $url = new Url('http://example.com:123/some/path');
+        $this->assertEquals(
+            'http://username:123456@example.com:123/some/path',
+            (string) $url->credentials('username', '123456')
+        );
+    }
+
+    public function testAddScheme()
+    {
+        $url = new Url('http://example.com');
+        $this->assertEquals('https://example.com', (string) $url->scheme('https'));
+    }
 }
