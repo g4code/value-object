@@ -9,6 +9,7 @@ class Url implements StringInterface
     const COLON         = ':';
     const FORWARD_SLASH = '/';
     const QUESTION_MARK = '?';
+    const AT = '@';
 
     /**
      * @var string
@@ -24,6 +25,16 @@ class Url implements StringInterface
     private $scheme;
 
     private $host;
+
+    /**
+     * @var string|null
+     */
+    private $user;
+
+    /**
+     * @var string|null
+     */
+    private $pass;
 
     /**
      * Url constructor.
@@ -107,10 +118,24 @@ class Url implements StringInterface
             . self::COLON
             . self::FORWARD_SLASH
             . self::FORWARD_SLASH
+            . (($this->user && $this->pass) ? $this->user . self::COLON . $this->pass . self::AT : '')
             . $this->host
             . ($this->port ? self::COLON . $this->port : '')
             . ($this->path ? self::FORWARD_SLASH . $this->path : '')
             . ($this->query ? self::QUESTION_MARK . $this->query : '');
+    }
+
+    public function credentials($user, $pass)
+    {
+        $this->user = $user;
+        $this->pass = $pass;
+        return new self($this->buildUrl());
+    }
+
+    public function scheme($scheme)
+    {
+        $this->scheme = $scheme;
+        return new self($this->buildUrl());
     }
 
     /**
@@ -125,5 +150,7 @@ class Url implements StringInterface
         $this->port   = isset($urlParts['port']) ? $urlParts['port'] : '';
         $this->path   = isset($urlParts['path']) ? ltrim($urlParts['path'], self::FORWARD_SLASH) : '';
         $this->query  = isset($urlParts['query']) ? $urlParts['query'] : '';
+        $this->user = isset($urlParts['user']) ? $urlParts['user'] : null;
+        $this->pass = isset($urlParts['pass']) ? $urlParts['pass'] : null;
     }
 }
