@@ -3,7 +3,7 @@
 use G4\ValueObject\ArrayList;
 use G4\ValueObject\StringLiteral;
 
-class ArrayListTest extends \PHPUnit_Framework_TestCase
+class ArrayListTest extends \PHPUnit\Framework\TestCase
 {
     public function testHas()
     {

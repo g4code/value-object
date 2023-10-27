@@ -3,7 +3,7 @@
 use G4\ValueObject\LanguageCode;
 use G4\ValueObject\Exception\InvalidLanguageCodeException;
 
-class LanguageCodeTest extends PHPUnit_Framework_TestCase
+class LanguageCodeTest extends \PHPUnit\Framework\TestCase
 {
 
     public function testToString()

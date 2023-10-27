@@ -5,7 +5,7 @@ use G4\ValueObject\StringLiteral;
 use G4\ValueObject\Exception\PathDoesNotExist;
 
 
-class RealPathTest extends \PHPUnit_Framework_TestCase
+class RealPathTest extends \PHPUnit\Framework\TestCase
 {
 
 

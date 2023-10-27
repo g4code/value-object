@@ -4,7 +4,7 @@ use G4\ValueObject\DomainName;
 use G4\ValueObject\StringLiteral;
 use G4\ValueObject\Exception\InvalidDomainNameException;
 
-class DomainNameTest extends \PHPUnit_Framework_TestCase
+class DomainNameTest extends \PHPUnit\Framework\TestCase
 {
 
 

@@ -2,7 +2,7 @@
 
 use G4\ValueObject\EmailType;
 
-class EmailTypeTest extends PHPUnit_Framework_TestCase
+class EmailTypeTest extends \PHPUnit\Framework\TestCase
 {
     const OTHER = 'other';
     const GMAIL = 'gmail';

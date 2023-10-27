@@ -3,7 +3,7 @@
 use G4\ValueObject\IntegerNumber;
 use G4\ValueObject\Exception\InvalidIntegerNumberException;
 
-class IntegerNumberTest extends \PHPUnit_Framework_TestCase
+class IntegerNumberTest extends \PHPUnit\Framework\TestCase
 {
 
     public function testValidInteger()

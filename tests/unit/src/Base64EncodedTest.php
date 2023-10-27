@@ -3,7 +3,7 @@
 use G4\ValueObject\Base64Encoded;
 use G4\ValueObject\Exception\InvalidBase64EncodedException;
 
-class Base64EncodedTest extends PHPUnit_Framework_TestCase
+class Base64EncodedTest extends \PHPUnit\Framework\TestCase
 {
     public function testBase64Encoded()
     {

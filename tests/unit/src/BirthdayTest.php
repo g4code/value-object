@@ -2,7 +2,7 @@
 
 use G4\ValueObject\Birthday;
 
-class BirthdayTest extends PHPUnit_Framework_TestCase {
+class BirthdayTest extends \PHPUnit\Framework\TestCase {
 
 
     public function testGetBirthday()

@@ -6,7 +6,7 @@ use G4\ValueObject\Exception\MissingCoordinateValueException;
 use G4\ValueObject\Exception\InvalidCoordinateLatitudeValueException;
 use G4\ValueObject\Exception\InvalidCoordinateLongitudeValueException;
 
-class CoordinateTest extends PHPUnit_Framework_TestCase
+class CoordinateTest extends \PHPUnit\Framework\TestCase
 {
     public function testWithValidCoordinate()
     {

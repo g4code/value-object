@@ -5,7 +5,7 @@ use G4\ValueObject\Exception\InvalidProbabilityException;
 use G4\ValueObject\Exception\InvalidProbabilityOutcomeException;
 use G4\ValueObject\Dictionary;
 
-class ProbabilityTest extends \PHPUnit_Framework_TestCase
+class ProbabilityTest extends \PHPUnit\Framework\TestCase
 {
 
     public function testGetValue()

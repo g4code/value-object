@@ -4,7 +4,7 @@ use G4\ValueObject\Md5;
 use G4\ValueObject\Exception\InvalidMd5Exception;
 use G4\ValueObject\Exception\MissingMd5ValueException;
 
-class Md5Test extends PHPUnit_Framework_TestCase
+class Md5Test extends \PHPUnit\Framework\TestCase
 {
     public function testToString()
     {

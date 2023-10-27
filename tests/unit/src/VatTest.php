@@ -4,7 +4,7 @@ use G4\ValueObject\Vat;
 use G4\ValueObject\Exception\MissingVatException;
 use G4\ValueObject\CountryCode;
 
-class VatTest extends \PHPUnit_Framework_TestCase
+class VatTest extends \PHPUnit\Framework\TestCase
 {
 
     public function testGet()

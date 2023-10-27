@@ -3,7 +3,7 @@
 use G4\ValueObject\AssetsUrl;
 use G4\ValueObject\Exception\InvalidAssetsUrlValueException;
 
-class AssetsUrlTest extends PHPUnit_Framework_TestCase
+class AssetsUrlTest extends \PHPUnit\Framework\TestCase
 {
     public function testValidUrl()
     {

@@ -4,7 +4,7 @@ use G4\ValueObject\Email;
 use G4\ValueObject\Exception\InvalidEmailException;
 use G4\ValueObject\Exception\MissingEmailValueException;
 
-class EmailTest extends PHPUnit_Framework_TestCase
+class EmailTest extends \PHPUnit\Framework\TestCase
 {
 
     private $validEmails = [
@@ -54,7 +54,7 @@ class EmailTest extends PHPUnit_Framework_TestCase
     public function testBadEmail()
     {
         foreach ($this->invalidEmails as $invalidEmail){
-            $this->setExpectedException(
+            $this->expectException(
                 '\Exception',
                 \G4\ValueObject\Exception\InvalidEmailException::ERROR_MESSAGE,
                 \G4\ValueObject\Exception\InvalidEmailException::ERROR_UUID
