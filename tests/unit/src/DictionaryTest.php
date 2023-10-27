@@ -65,15 +65,15 @@ class DictionaryTest extends \PHPUnit\Framework\TestCase
 
     }
 
-//    public function testGet()
-//    {
-//        $aDictionary = new Dictionary(['a' => 'a path']);
-//        $this->assertEquals('a path', $aDictionary->get('a'));
-//        $this->assertNull($aDictionary->get('b'));
-//
-//        $aDictionary = new Dictionary([]);
-//        $this->assertNull($aDictionary->get('a'));
-//    }
+    public function testGet()
+    {
+        $aDictionary = new Dictionary(['a' => 'a path']);
+        $this->assertEquals('a path', $aDictionary->get('a'));
+        $this->assertNull($aDictionary->get('b'));
+
+        $aDictionary = new Dictionary([]);
+        $this->assertNull($aDictionary->get('a'));
+    }
 
     public function testGetFromDeeperLevels()
     {
