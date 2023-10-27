@@ -4,7 +4,7 @@
 *.dat
 *.out
 *.pid
-*.gz]
+*.gz
 
 !external/mozilla/public_suffix_list.dat
 
