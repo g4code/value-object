@@ -3,7 +3,7 @@
 use G4\ValueObject\Environment;
 use G4\ValueObject\Exception\InvalidEnvironment;
 
-class EnvironmentTest extends PHPUnit_Framework_TestCase
+class EnvironmentTest extends \PHPUnit\Framework\TestCase
 {
 
     public function testInvalidEnvironment()

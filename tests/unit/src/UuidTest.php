@@ -3,7 +3,7 @@
 use G4\ValueObject\Uuid;
 use G4\ValueObject\Exception\InvalidUuidException;
 
-class UuidTest extends \PHPUnit_Framework_TestCase
+class UuidTest extends \PHPUnit\Framework\TestCase
 {
 
     public function testWithValidUuid()

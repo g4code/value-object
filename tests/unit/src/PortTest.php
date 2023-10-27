@@ -3,7 +3,7 @@
 use G4\ValueObject\PortNumber;
 use G4\ValueObject\Exception\InvalidPortNumberException;
 
-class PortTest extends \PHPUnit_Framework_TestCase
+class PortTest extends \PHPUnit\Framework\TestCase
 {
     public function testValidPortNumber()
     {

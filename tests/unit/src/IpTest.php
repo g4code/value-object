@@ -3,7 +3,7 @@
 use G4\ValueObject\Ip;
 
 
-class IpTest extends PHPUnit_Framework_TestCase
+class IpTest extends \PHPUnit\Framework\TestCase
 {
 
     public function testToString()

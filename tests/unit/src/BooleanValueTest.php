@@ -3,7 +3,7 @@
 use G4\ValueObject\BooleanValue;
 use G4\ValueObject\Exception\InvalidBooleanException;
 
-class BooleanTest extends \PHPUnit_Framework_TestCase
+class BooleanValueTest extends \PHPUnit\Framework\TestCase
 {
     public function testValidBooleans()
     {

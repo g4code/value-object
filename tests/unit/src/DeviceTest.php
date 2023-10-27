@@ -2,7 +2,7 @@
 
 use G4\ValueObject\Device;
 
-class DeviceTest extends PHPUnit_Framework_TestCase
+class DeviceTest extends \PHPUnit\Framework\TestCase
 {
 
     public function testMobile()

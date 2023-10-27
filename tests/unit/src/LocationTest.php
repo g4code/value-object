@@ -4,7 +4,7 @@ use G4\ValueObject\Dictionary;
 use G4\ValueObject\Exception\InvalidLocationException;
 use G4\ValueObject\Location;
 
-class LocationTest extends PHPUnit_Framework_TestCase
+class LocationTest extends \PHPUnit\Framework\TestCase
 {
     public function testAddQuery()
     {
