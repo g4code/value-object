@@ -5,7 +5,7 @@ use G4\ValueObject\Exception\InvalidUrlException;
 use G4\ValueObject\PortNumber;
 use G4\ValueObject\Dictionary;
 
-class UrlTest extends \PHPUnit_Framework_TestCase
+class UrlTest extends \PHPUnit\Framework\TestCase
 {
 
     public function testWithValidUrl()

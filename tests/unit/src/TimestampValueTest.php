@@ -4,7 +4,7 @@ use G4\ValueObject\TimestampValue;
 use G4\ValueObject\Exception\MissingTimestampValueException;
 use G4\ValueObject\Exception\InvalidTimestampValueException;
 
-class TimestampValueTest extends \PHPUnit_Framework_TestCase
+class TimestampValueTest extends \PHPUnit\Framework\TestCase
 {
     public function testMissingValueException()
     {

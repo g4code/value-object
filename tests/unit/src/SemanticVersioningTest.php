@@ -3,7 +3,7 @@
 use G4\ValueObject\SemanticVersioning;
 use G4\ValueObject\Exception\InvalidSemanticVersioningException;
 
-class SemanticVersioningTest extends \PHPUnit_Framework_TestCase
+class SemanticVersioningTest extends \PHPUnit\Framework\TestCase
 {
     public function testValidVersions()
     {

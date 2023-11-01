@@ -18,6 +18,8 @@ vendor
 .idea
 
 tests/unit/coverage/*
+tests/unit/.phpunit.result.cache
+tests/unit/.phpunit.cache/*
 .vagrant/
 .bash_history
 *.DS_Store

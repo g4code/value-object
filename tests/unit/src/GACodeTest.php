@@ -4,7 +4,7 @@ use G4\ValueObject\GACode;
 
 use G4\ValueObject\Exception\InvalidGaCodeException;
 
-class GACodeTest extends PHPUnit_Framework_TestCase
+class GACodeTest extends \PHPUnit\Framework\TestCase
 {
     public function testWithValidValues()
     {

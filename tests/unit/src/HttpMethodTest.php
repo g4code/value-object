@@ -4,7 +4,7 @@ use G4\ValueObject\HttpMethod;
 use G4\ValueObject\Exception\InvalidHttpMethodException;
 use G4\ValueObject\Exception\MissingHttpMethodValueException;
 
-class HttpMethodTest extends PHPUnit_Framework_TestCase
+class HttpMethodTest extends \PHPUnit\Framework\TestCase
 {
     public function testToString()
     {

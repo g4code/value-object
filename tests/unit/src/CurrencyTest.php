@@ -2,7 +2,7 @@
 
 use G4\ValueObject\Currency;
 
-class CurrencyTest extends PHPUnit_Framework_TestCase
+class CurrencyTest extends \PHPUnit\Framework\TestCase
 {
 
     public function testCurrency()

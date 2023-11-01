@@ -3,7 +3,7 @@
 use G4\ValueObject\StringLiteral;
 use G4\ValueObject\Exception\InvalidStringLiteralException;
 
-class StringLiteralTest extends \PHPUnit_Framework_TestCase
+class StringLiteralTest extends \PHPUnit\Framework\TestCase
 {
 
     public function testWithValidString()

@@ -3,7 +3,7 @@
 use G4\ValueObject\CountryCode;
 use G4\ValueObject\Exception\InvalidCountryCodeException;
 
-class CountryCodeTest extends PHPUnit_Framework_TestCase
+class CountryCodeTest extends \PHPUnit\Framework\TestCase
 {
 
 

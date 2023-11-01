@@ -4,7 +4,7 @@ use G4\ValueObject\Sha1;
 use G4\ValueObject\Exception\InvalidSha1Exception;
 use G4\ValueObject\Exception\MissingSha1ValueException;
 
-class Sha1Test extends PHPUnit_Framework_TestCase
+class Sha1Test extends \PHPUnit\Framework\TestCase
 {
     public function testToString()
     {

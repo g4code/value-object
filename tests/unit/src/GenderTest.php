@@ -4,7 +4,7 @@ use G4\ValueObject\Gender;
 use G4\ValueObject\Exception\InvalidGenderKeyException;
 use G4\ValueObject\Exception\InvalidGenderException;
 
-class GenderTest extends PHPUnit_Framework_TestCase {
+class GenderTest extends \PHPUnit\Framework\TestCase {
 
 
     //MALE

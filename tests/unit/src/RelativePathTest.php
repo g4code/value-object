@@ -3,7 +3,7 @@
 use G4\ValueObject\RelativePath;
 use G4\ValueObject\Exception\MissingDirsException;
 
-class RelativePathTest extends \PHPUnit_Framework_TestCase
+class RelativePathTest extends \PHPUnit\Framework\TestCase
 {
 
     public function testPath()
