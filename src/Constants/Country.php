@@ -4,6 +4,7 @@ namespace G4\ValueObject\Constants;
 
 class Country
 {
+
     const CODES = [
         'AF' => 'Afghanistan',
         'AX' => 'Aland Islands',
@@ -32,6 +33,7 @@ class Country
         'BM' => 'Bermuda',
         'BT' => 'Bhutan',
         'BO' => 'Bolivia',
+        'BQ' => 'Bonaire',
         'BA' => 'Bosnia And Herzegovina',
         'BW' => 'Botswana',
         'BV' => 'Bouvet Island',
@@ -61,6 +63,7 @@ class Country
         'CI' => 'Cote D\'Ivoire',
         'HR' => 'Croatia',
         'CU' => 'Cuba',
+        'CW' => 'Curacao',
         'CY' => 'Cyprus',
         'CZ' => 'Czech Republic',
         'DK' => 'Denmark',
@@ -204,12 +207,14 @@ class Country
         'SC' => 'Seychelles',
         'SL' => 'Sierra Leone',
         'SG' => 'Singapore',
+        'SX' => 'Sint Maarten',
         'SK' => 'Slovakia',
         'SI' => 'Slovenia',
         'SB' => 'Solomon Islands',
         'SO' => 'Somalia',
         'ZA' => 'South Africa',
         'GS' => 'South Georgia And Sandwich Isl.',
+        'SS' => 'South Sudan',
         'ES' => 'Spain',
         'LK' => 'Sri Lanka',
         'SD' => 'Sudan',
