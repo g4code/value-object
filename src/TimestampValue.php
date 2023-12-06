@@ -53,7 +53,7 @@ class TimestampValue implements StringInterface, NumberInterface
      */
     public function getFormatted($format = 'Y-m-d')
     {
-        return date($format, $this->value);
+        return date($format, (int)$this->value);
     }
 
     /**
