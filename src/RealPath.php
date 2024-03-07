@@ -20,10 +20,11 @@ class RealPath
      */
     public function __construct(...$parts)
     {
-        $this->path = realpath(RelativePath::join($parts));
-        if ($this->path === false) {
+        $realpath = realpath(RelativePath::join($parts));
+        if ($realpath === false) {
             throw new PathDoesNotExist(RelativePath::join($parts));
         }
+        $this->path = $realpath;
     }
 
     /**
