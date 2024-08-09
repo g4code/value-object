@@ -50,17 +50,27 @@ class Probability extends IntegerNumber
      */
     public function getOutcome(Dictionary $possibilities)
     {
-        $mapOfChances = [];
-        $previousValue = null;
-        foreach ($possibilities->getAll() as $key => $value) {
-            $mapOfChances[$key] = $value + $previousValue;
-            $previousValue += $value;
-        }
-        foreach ($mapOfChances as $key => $value) {
-            if ($this->getValue() <= $value) {
-                return $key;
+        try {
+            $chances = [];
+            $probabilityTotal = 0;
+
+            foreach ($possibilities->getAll() as $returnValue => $probability) {
+                $chances = $chances + array_fill(count($chances), $probability, $returnValue);
+                $probabilityTotal += $probability;
             }
+
+            if (count($chances) < 100) {
+                $chances = $chances + array_fill(count($chances), 100 - $probabilityTotal, 0);
+            }
+
+            shuffle($chances);
+
+            $retunValueSelected = $chances[$this->getValue()];
+
+            return $retunValueSelected;
+
+        } catch (\Exception $e) {
+            throw new InvalidProbabilityOutcomeException($this->getValue(), json_encode($possibilities->getAll()));
         }
-        throw new InvalidProbabilityOutcomeException($this->getValue(), json_encode($possibilities->getAll()));
     }
 }
