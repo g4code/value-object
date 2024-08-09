@@ -40,7 +40,8 @@ class Probability extends IntegerNumber
      */
     public static function generateRandomWithChance()
     {
-        return new static(rand(self::MINIMAL_CHANCE, self::CERTAIN));
+        //$chances array, in getOutcome(), starts from index 0, and random can be from 1 to 100;
+        return new static(rand(self::MINIMAL_CHANCE, self::CERTAIN) - 1);
     }
 
     /**
