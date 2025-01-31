@@ -6,7 +6,7 @@ class InvalidEmailException extends \Exception
 {
     const ERROR_UUID = 604;
 
-    const ERROR_MESSAGE = 'Email is invalid.';
+    const ERROR_MESSAGE = 'Email %s is invalid.';
 
     public function __construct($value)
     {

@@ -6,7 +6,7 @@ class InvalidUrlException extends \Exception
 {
     const ERROR_CODE = 605;
 
-    const ERROR_MESSAGE = 'Url is invalid.';
+    const ERROR_MESSAGE = 'Url %s is invalid.';
 
     public function __construct($value)
     {

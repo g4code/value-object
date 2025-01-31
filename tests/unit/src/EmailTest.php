@@ -56,7 +56,7 @@ class EmailTest extends PHPUnit_Framework_TestCase
         foreach ($this->invalidEmails as $invalidEmail){
             $this->setExpectedException(
                 '\Exception',
-                \G4\ValueObject\Exception\InvalidEmailException::ERROR_MESSAGE,
+                sprintf(\G4\ValueObject\Exception\InvalidEmailException::ERROR_MESSAGE, "'$invalidEmail'"),
                 \G4\ValueObject\Exception\InvalidEmailException::ERROR_UUID
             );
             new Email($invalidEmail);
