@@ -16,6 +16,7 @@ class EnvironmentTest extends \PHPUnit\Framework\TestCase
     public function testValidEnvironment()
     {
         $this->assertEquals('production', new Environment('production'));
+        $this->assertEquals('production-migration', new Environment('production-migration'));
         $this->assertEquals('stage', new Environment('stage'));
         $this->assertEquals('dev', new Environment('dev'));
         $this->assertEquals('local', new Environment('local'));
@@ -32,5 +33,9 @@ class EnvironmentTest extends \PHPUnit\Framework\TestCase
         $this->assertTrue((new Environment('vagrant'))->isLocal());
         $this->assertTrue((new Environment('beta'))->isBeta());
         $this->assertTrue((new Environment('docker'))->isDocker());
+        $this->assertTrue((new Environment('production-migration'))->isProductionMigration());
+        $this->assertTrue((new Environment('production-migration'))->isProductionEnvironment());
+        $this->assertTrue((new Environment('production'))->isProductionEnvironment());
+        $this->assertTrue((new Environment('beta'))->isProductionEnvironment());
     }
 }
