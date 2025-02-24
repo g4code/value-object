@@ -6,13 +6,14 @@ use G4\ValueObject\Exception\InvalidEnvironment;
 
 class Environment implements StringInterface
 {
-    const PRODUCTION    = 'production';
-    const BETA          = 'beta';
-    const STAGE         = 'stage';
-    const DEV           = 'dev';
-    const LOCAL         = 'local';
-    const VAGRANT       = 'vagrant';
-    const DOCKER        = 'docker';
+    const PRODUCTION = 'production';
+    const PRODUCTION_MIGRATION = 'production-migration';
+    const BETA = 'beta';
+    const STAGE = 'stage';
+    const DEV = 'dev';
+    const LOCAL = 'local';
+    const VAGRANT = 'vagrant';
+    const DOCKER = 'docker';
 
     /**
      * @var string
@@ -73,6 +74,7 @@ class Environment implements StringInterface
     {
         return in_array($value, [
             self::PRODUCTION,
+            self::PRODUCTION_MIGRATION,
             self::BETA,
             self::STAGE,
             self::DEV,
@@ -80,5 +82,17 @@ class Environment implements StringInterface
             self::VAGRANT,
             self::DOCKER,
         ]);
+    }
+
+    public function isProductionMigration()
+    {
+        return $this->value === self::PRODUCTION_MIGRATION;
+    }
+
+    public function isProductionEnvironment()
+    {
+        return $this->isProduction()
+            || $this->isBeta()
+            || $this->isProductionMigration();
     }
 }
