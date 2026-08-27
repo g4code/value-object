@@ -13,6 +13,10 @@ class Currency
             'title' => 'Brazilian real',
             'symbol' => 'R$'
         ],
+        'MXN' => [
+            'title' => 'Mexican peso',
+            'symbol' => 'MX$'
+        ],
         'EUR' => [
             'title' => 'Euro',
             'symbol' => '€'
